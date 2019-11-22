@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Highlighter Settings</title>
+    <link rel="stylesheet" type="text/css" href="https://miro.com/app/static/styles.1.0.css"/>
+    <script type="text/javascript" src="https://miro.com/app/static/sdk.1.1.js"></script>
+    <script type="text/javascript" src="settings.js"></script>
+</head>
+<body>
+<div style="padding: 20px 10px">
+    <h1>Code Highlighter Settings</h1>
+    <section id="languages" style="padding: 10px; line-height: 58px; text-align: center;">
+    </section>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    const languages = document.getElementById('languages');
+    const currentLang = code.highlighter.settings.getLang();
+    for (let lang in code.highlighter.settings.languages){
+        const button = document.createElement("button");
+        button.id = lang;
+        button.className = `miro-btn miro-btn--${currentLang === lang ? 'primary' : 'secondary' } miro-btn--small`;
+        button.textContent = lang;
+        if (code.highlighter.settings.languages[lang] === 1) {
+            button.onclick = () => {
+                const selectedButton = document.getElementById(code.highlighter.settings.getLang());
+                selectedButton.className = selectedButton.className.replace('primary', 'secondary');
+                code.highlighter.settings.setLang(lang);
+                button.className = button.className.replace('secondary', 'primary');
+                closeModal();
+            };
+        } else {
+            button.disabled = true;
+        }
+        languages.appendChild(button);
+    }
+
+    function closeModal() {
+        miro.board.ui.closeModal();
+    }
+</script>
