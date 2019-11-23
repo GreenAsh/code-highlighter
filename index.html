@@ -7,7 +7,10 @@
     <script src="https://browser.sentry-cdn.com/5.9.1/bundle.min.js" integrity="sha384-/x1aHz0nKRd6zVUazsV6CbQvjJvr6zQL2CHbQZf3yoLkezyEtZUpqUNnOLW9Nt3v" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        Sentry.init({ dsn: 'https://af5a66fee3174f318ab6c6ccf6ae2071@sentry.io/1831923' });
+        Sentry.init({
+            dsn: 'https://af5a66fee3174f318ab6c6ccf6ae2071@sentry.io/1831923',
+            environment: 'github'
+        });
     </script>
 
     <script type="text/javascript" src="prism.js"></script>
