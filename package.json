@@ -1,0 +1,35 @@
+{
+  "name": "code-highlighter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sentry/browser": "^5.9.1",
+    "prismjs": "^1.17.1",
+    "react": "^16.9.12",
+    "react-dom": "^16.9.12"
+  },
+  "devDependencies": {
+    "@sentry/typescript": "^5.7.1",
+    "@types/inline-css": "0.0.32",
+    "@types/prismjs": "^1.16.0",
+    "@types/react": "^16.9.12",
+    "@types/react-dom": "^16.9.4",
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "svg-inline-loader": "^0.8.0",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
