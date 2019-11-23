@@ -1,3 +1,4 @@
+import 'prismjs/components/prism-java';
 import {DOM} from "../../config";
 
 class JavaTokenFactory implements TokenFactory {
