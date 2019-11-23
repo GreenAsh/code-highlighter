@@ -1,0 +1,24 @@
+{
+  "extends": "./node_modules/@sentry/typescript/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./dist/",
+    "strict": true,
+    "allowUnreachableCode": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "allowJs": true,
+    "lib": ["DOM","ES6","ScriptHost"],
+
+    "esModuleInterop": true,
+    "sourceMap": true
+  },
+  "lib": ["es2015"],
+  "include": [
+    "src/**/*",
+    "types/*"
+  ]
+}

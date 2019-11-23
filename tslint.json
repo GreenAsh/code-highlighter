@@ -1,0 +1,11 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "@sentry/typescript/tslint"
+
+    ],
+    "jsRules": {},
+    "rules": {},
+    "rulesDirectory": []
+}
