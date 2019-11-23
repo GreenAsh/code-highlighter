@@ -65,10 +65,13 @@ function highlightWidgets(widgets) {
     let count = 0;
     for (let i = 0; i < widgets.length; i++) {
         let widget = widgets[i];
-        let highlightedText = highlightCode(getWidgetText(widget), document, code.highlighter.settings.getLang());
+        let plainText = plainText(widget);
+        let highlightedText = highlightCode(plainText, document, code.highlighter.settings.getLang());
         if (highlightedText.length >= MAX_TEXT_SIZE) {
             miro.showErrorNotification('Highlight failed, due to possible loss of data');
-            console.warn('Highlighted text size: ', highlightedText.length, ' source text size: ', widget.text.length);
+            const message = `Highlighted length: ${highlightedText.length} Cleaned length: ${plainText.length}  Widget text length: ${widget.text.length}`;
+            Sentry.captureMessage(message);
+            console.warn(message);
             continue;
         }
         let updateData = {
@@ -107,7 +110,7 @@ const BLOCK_ELEMENTS = {
     'br': 1
 };
 
-function getWidgetText(widget) {
+function plainText(widget) {
     if (!widget || !widget.text) {
         return;
     }
