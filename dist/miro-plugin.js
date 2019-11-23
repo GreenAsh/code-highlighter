@@ -1757,7 +1757,7 @@ class PrismDOMProcessor {
     }
     process(html) {
         const normalizedHtml = PrismDOMProcessor.replacesBreaks(PrismDOMProcessor.replaceTabs(html));
-        let source = new HTMLDivElement();
+        let source = _config__WEBPACK_IMPORTED_MODULE_0__["DOM"].createElement('div');
         source.innerHTML = normalizedHtml;
         let out = new HTMLElement();
         this.transform(source, out);
