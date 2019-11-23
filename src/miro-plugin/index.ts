@@ -1,7 +1,6 @@
 import {default as highlighter} from '../code-highlighter/prism';
 import {default as settings} from '../settings/settings'
 import * as Sentry from '@sentry/browser';
-
 import IWidget = SDK.IWidget;
 
 function getWidgetText(widget: any): string {
@@ -38,16 +37,6 @@ miro.onReady(async () => {
                     svgIcon: icon24,
                     onClick: bottomBarAction
                 };
-            },
-            toolbar: async () => {
-                return {
-                    title: 'Code Highlighter',
-                    toolbarSvgIcon: icon24,
-                    librarySvgIcon: icon24,
-                    onClick: () => {
-                        console.log(123);
-                    }
-                }
             }
         }
     })
@@ -169,8 +158,7 @@ function getPlainText(widgetText: string) {
 
     function isBlockElement(node: Node) {
         if (node instanceof HTMLElement){
-            const element: HTMLElement = node;
-            return element.tagName && BLOCK_ELEMENTS.get(element.tagName.toLowerCase()) !== null;
+            return BLOCK_ELEMENTS.get(node.tagName.toLowerCase()) === 1;
         }
         return false;
     }
