@@ -12,7 +12,7 @@ export class PrismDOMProcessor implements DOMProcessor {
         const normalizedHtml = PrismDOMProcessor.replacesBreaks(PrismDOMProcessor.replaceTabs(html));
         let source = DOM.createElement('div');
         source.innerHTML = normalizedHtml;
-        let out = new HTMLElement();
+        let out = DOM.createElement('div');
         this.transform(source, out);
         return out.innerHTML;
     }
