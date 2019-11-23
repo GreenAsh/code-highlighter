@@ -1729,6 +1729,16 @@ miro.onReady(() => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 
                     svgIcon: icon24,
                     onClick: bottomBarAction
                 };
+            }),
+            toolbar: () => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
+                return {
+                    title: 'Code Highlighter',
+                    toolbarSvgIcon: icon24,
+                    librarySvgIcon: icon24,
+                    onClick: () => {
+                        console.log(123);
+                    }
+                };
             })
         }
     });
