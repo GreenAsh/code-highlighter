@@ -38,6 +38,16 @@ miro.onReady(async () => {
                     svgIcon: icon24,
                     onClick: bottomBarAction
                 };
+            },
+            toolbar: async () => {
+                return {
+                    title: 'Code Highlighter',
+                    toolbarSvgIcon: icon24,
+                    librarySvgIcon: icon24,
+                    onClick: () => {
+                        console.log(123);
+                    }
+                }
             }
         }
     })
