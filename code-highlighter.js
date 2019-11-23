@@ -115,17 +115,17 @@ const highlightCode = function (text, nodeFactory, lang) {
         if (!className) {
             return;
         }
+        if (element.nodeType === 3){
+            return;
+        }
         let classNames = className.split(' ');
         for (let i = 0; i < classNames.length; i++){
-            applyStyles(element, classNames[i]);
+            _applyStyles(element, classNames[i]);
         }
 
     }
 
-    function applyStyles(element, className) {
-        if (element.nodeType === 3){
-            return;
-        }
+    function _applyStyles(element, className) {
         switch (className) {
             case 'namespace':
                 element.style.color = '#004A43';
