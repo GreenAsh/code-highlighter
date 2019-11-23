@@ -1729,16 +1729,6 @@ miro.onReady(() => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 
                     svgIcon: icon24,
                     onClick: bottomBarAction
                 };
-            }),
-            toolbar: () => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
-                return {
-                    title: 'Code Highlighter',
-                    toolbarSvgIcon: icon24,
-                    librarySvgIcon: icon24,
-                    onClick: () => {
-                        console.log(123);
-                    }
-                };
             })
         }
     });
@@ -1861,8 +1851,7 @@ function getPlainText(widgetText) {
     }
     function isBlockElement(node) {
         if (node instanceof HTMLElement) {
-            const element = node;
-            return element.tagName && BLOCK_ELEMENTS.get(element.tagName.toLowerCase()) !== null;
+            return BLOCK_ELEMENTS.get(node.tagName.toLowerCase()) === 1;
         }
         return false;
     }
