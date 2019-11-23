@@ -50,7 +50,7 @@ const highlightCode = function (text, nodeFactory, lang) {
             if (child.hasChildNodes()){
                 const node = token !== false ? token : outputElement;
                 if (!node || !node.nodeType || node.nodeType === 3){
-                    console.warn(node, token, child);
+                    console.error(node, token, child);
                 }
                 colorize(child, node);
             }
@@ -106,7 +106,9 @@ const highlightCode = function (text, nodeFactory, lang) {
             case 'application-json': // http
                 return false;
             default:
-                console.warn(`Non operable class name: '${element.className}'`);
+                const message = `Non operable class name: '${element.className}'`;
+                Sentry.captureMessage(message);
+                console.warn(message);
                 return element.cloneNode();
         }
     }
