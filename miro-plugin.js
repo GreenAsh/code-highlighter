@@ -65,7 +65,7 @@ function highlightWidgets(widgets) {
     let count = 0;
     for (let i = 0; i < widgets.length; i++) {
         let widget = widgets[i];
-        let plainText = plainText(widget);
+        let plainText = getPlainText(widget);
         let highlightedText = highlightCode(plainText, document, code.highlighter.settings.getLang());
         if (highlightedText.length >= MAX_TEXT_SIZE) {
             miro.showErrorNotification('Highlight failed, due to possible loss of data');
@@ -110,7 +110,7 @@ const BLOCK_ELEMENTS = {
     'br': 1
 };
 
-function plainText(widget) {
+function getPlainText(widget) {
     if (!widget || !widget.text) {
         return;
     }
