@@ -128,7 +128,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prism_language_highlighter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
 /* harmony import */ var _factories__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
-/* harmony import */ var _prism_dom_processor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var _prism_dom_processor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(14);
+/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16);
+
 
 
 
@@ -142,7 +144,7 @@ _config__WEBPACK_IMPORTED_MODULE_2__["LANGUAGES"].forEach(lang => {
         console.error(`Language isn't ${lang} implemented`);
     }
     else {
-        _code_highlighter__WEBPACK_IMPORTED_MODULE_0__["CodeHighlighterImpl"].getInstance().register(new _prism_language_highlighter__WEBPACK_IMPORTED_MODULE_1__["PrismLanguageHighlighter"](lang, new _prism_dom_processor__WEBPACK_IMPORTED_MODULE_4__["PrismDOMProcessor"](tokenFactory)));
+        _code_highlighter__WEBPACK_IMPORTED_MODULE_0__["CodeHighlighterImpl"].getInstance().register(new _prism_language_highlighter__WEBPACK_IMPORTED_MODULE_1__["PrismLanguageHighlighter"](lang, new _prism_dom_processor__WEBPACK_IMPORTED_MODULE_4__["PrismDOMProcessor"](lang, tokenFactory)));
     }
 });
 /* harmony default export */ __webpack_exports__["default"] = (_code_highlighter__WEBPACK_IMPORTED_MODULE_0__["CodeHighlighterImpl"].getInstance());
@@ -1451,9 +1453,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__);
 
-const LANGUAGES = ['clike', 'java'];
+const LANGUAGES = ['java', 'js', 'ts'];
 const DEFAULT_LANGUAGE = 'java';
-const DOM = window.document;
+class DOM {
+    static createElement(tagName, className) {
+        const result = document.createElement(tagName);
+        result.className = className;
+        return result;
+    }
+    static create(tagName) {
+        return document.createElement(tagName);
+    }
+}
+;
 
 
 /***/ }),
@@ -1525,11 +1537,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "factories", function() { return factories; });
 /* harmony import */ var _clike__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
 /* harmony import */ var _java__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
+/* harmony import */ var _javascript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
 
 
-let factories = new Map();
+
+const factories = new Map();
 factories.set('clike', _clike__WEBPACK_IMPORTED_MODULE_0__["default"]);
 factories.set('java', _java__WEBPACK_IMPORTED_MODULE_1__["default"]);
+factories.set('js', _javascript__WEBPACK_IMPORTED_MODULE_2__["default"]);
+factories.set('ts', _javascript__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 
 /***/ }),
@@ -1538,12 +1554,13 @@ factories.set('java', _java__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLikeTokenFactory", function() { return CLikeTokenFactory; });
 /* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
 /* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 
 
-class ClikeTokenFactory {
+class CLikeTokenFactory {
     create(name, className) {
         switch (name) {
             case 'string':
@@ -1551,10 +1568,10 @@ class ClikeTokenFactory {
             case 'number':
             case 'function':
             case 'comment':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span');
+                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span', className);
             case 'keyword':
             case 'class-name':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('b');
+                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('b', className);
             case 'operator':
             case 'punctuation':
                 return false;
@@ -1563,7 +1580,7 @@ class ClikeTokenFactory {
         }
     }
 }
-/* harmony default export */ __webpack_exports__["default"] = (new ClikeTokenFactory());
+/* harmony default export */ __webpack_exports__["default"] = (new CLikeTokenFactory());
 
 
 /***/ }),
@@ -1611,26 +1628,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _clike__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
 
 
-class JavaTokenFactory {
+
+class JavaTokenFactory extends _clike__WEBPACK_IMPORTED_MODULE_2__["CLikeTokenFactory"] {
     create(name, className) {
+        let result = super.create(name, className);
+        if (result !== null) {
+            return result;
+        }
         switch (name) {
-            case 'string':
-            case 'boolean':
-            case 'number':
-            case 'function':
             case 'namespace':
             case 'generics':
-            case 'comment':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span');
-            case 'keyword':
-            case 'class-name':
+                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span', className);
             case 'annotation':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('b');
-            case 'operator':
-            case 'punctuation':
-                return false;
+                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('b', className);
             default:
                 return null;
         }
@@ -1645,18 +1658,59 @@ class JavaTokenFactory {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
+/* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _clike__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+
+
+
+class JavascriptTokenFactory extends _clike__WEBPACK_IMPORTED_MODULE_2__["CLikeTokenFactory"] {
+    create(name, className) {
+        let result = super.create(name, className);
+        if (result !== null) {
+            return result;
+        }
+        switch (name) {
+            case 'regex':
+            case 'function-variable':
+            case 'parameter':
+            case 'template-string':
+            case 'template-punctuation':
+            case 'interpolation':
+            case 'interpolation-punctuation':
+                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span', className);
+            case 'constant':
+                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('b', className);
+            default:
+                return null;
+        }
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (new JavascriptTokenFactory());
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrismDOMProcessor", function() { return PrismDOMProcessor; });
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
+/* harmony import */ var _themes_interfaces__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
+
 
 class PrismDOMProcessor {
-    constructor(nodeFactory) {
+    constructor(lang, nodeFactory) {
+        this._lang = lang;
         this._tokenFactory = nodeFactory;
     }
     process(html) {
         const normalizedHtml = PrismDOMProcessor.replacesBreaks(PrismDOMProcessor.replaceTabs(html));
-        let source = _config__WEBPACK_IMPORTED_MODULE_0__["DOM"].createElement('div');
+        let source = _config__WEBPACK_IMPORTED_MODULE_0__["DOM"].create('div');
         source.innerHTML = normalizedHtml;
-        let out = _config__WEBPACK_IMPORTED_MODULE_0__["DOM"].createElement('div');
+        let out = _config__WEBPACK_IMPORTED_MODULE_0__["DOM"].create('div');
         this.transform(source, out);
         return out.innerHTML;
     }
@@ -1683,6 +1737,7 @@ class PrismDOMProcessor {
         parent.childNodes.forEach(child => {
             const converted = this.convert(child);
             if (converted !== false) {
+                this.applyStyles(converted);
                 out.appendChild(converted);
             }
             if (child.hasChildNodes()) {
@@ -1697,7 +1752,7 @@ class PrismDOMProcessor {
         }
         const element = source;
         if (element.tagName === 'P' && !element.hasChildNodes()) {
-            return _config__WEBPACK_IMPORTED_MODULE_0__["DOM"].createElement('br');
+            return _config__WEBPACK_IMPORTED_MODULE_0__["DOM"].create('br');
         }
         if (!PrismDOMProcessor.isToken(element)) {
             return element.cloneNode(false);
@@ -1715,8 +1770,162 @@ class PrismDOMProcessor {
     static isToken(element) {
         return element.className && element.className.startsWith('token ');
     }
+    applyStyles(target) {
+        if (!(target instanceof HTMLElement)) {
+            return;
+        }
+        _themes_interfaces__WEBPACK_IMPORTED_MODULE_1__["ThemeContext"].getInstance().currentTheme.applyStyle(this._lang, target.className, target);
+        target.removeAttribute('class');
+    }
 }
 
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThemeContext", function() { return ThemeContext; });
+class ThemeContext {
+    constructor() {
+        this._currentTheme = null;
+    }
+    static getInstance() {
+        if (!ThemeContext._instance) {
+            ThemeContext._instance = new ThemeContext();
+        }
+        return ThemeContext._instance;
+    }
+    get currentTheme() {
+        if (this._currentTheme != null) {
+            return this._currentTheme;
+        }
+        else {
+            throw new Error(`There is no colorizer in context`);
+        }
+    }
+    set currentTheme(value) {
+        this._currentTheme = value;
+    }
+}
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "themeRegistry", function() { return themeRegistry; });
+/* harmony import */ var _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17);
+/* harmony import */ var _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
+/* harmony import */ var _interfaces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
+/* harmony import */ var _data_default_theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
+
+
+
+
+const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', null, _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
+const themeRegistry = new _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__["DefaultThemeRegistry"](defaultTheme);
+// register themes
+themeRegistry.freeze();
+_interfaces__WEBPACK_IMPORTED_MODULE_2__["ThemeContext"].getInstance().currentTheme = defaultTheme;
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DefaultThemeRegistry", function() { return DefaultThemeRegistry; });
+class DefaultThemeRegistry {
+    constructor(defaultTheme) {
+        this._theme2Object = new Map();
+        this._freezed = false;
+        this._defaultTheme = defaultTheme;
+        this._theme2Object.set(defaultTheme.getName(), defaultTheme);
+    }
+    getTheme(theme) {
+        const result = this._theme2Object.get(theme);
+        if (result == null) {
+            console.warn(`Theme ${theme} not found`);
+            return this._defaultTheme;
+        }
+        return result;
+    }
+    freeze() {
+        if (!this._freezed) {
+            this._freezed = true;
+        }
+        else {
+            console.warn('Illegal state: trying to freeze already freezed ColorizerRegistry');
+        }
+    }
+    register(theme) {
+        if (this._freezed) {
+            throw new Error(`Can't register theme '${name} because registry has been frozen'`);
+        }
+        this._theme2Object.set(theme.getName(), theme);
+    }
+}
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThemeImpl", function() { return ThemeImpl; });
+class ThemeImpl {
+    constructor(name, backgroundColor, themeData) {
+        this._name = name;
+        this._backgroundColor = backgroundColor;
+        this._themeData = JSON.parse(themeData);
+    }
+    getName() {
+        return this._name;
+    }
+    getBackgroundColor() {
+        return this._backgroundColor;
+    }
+    applyStyle(lang, className, element) {
+        if (className === '') {
+            return;
+        }
+        let classNames = className.replace(/-/g, '_').split(' ');
+        classNames.forEach(value => {
+            if (value === 'token') {
+                return;
+            }
+            this.mergeStyle(value, element, true);
+            this.mergeStyle(`${lang}_${value}`, element, false);
+        });
+    }
+    mergeStyle(className, element, warn) {
+        if (this._themeData[className]) {
+            let styleData = this._themeData[className];
+            for (let property in styleData) {
+                // noinspection JSUnfilteredForInLoop
+                element.style.setProperty(property, styleData[property]);
+            }
+        }
+        else if (warn) {
+            console.warn(`Unknown style class name ${className}`);
+        }
+    }
+}
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\": \"slategray\"},\"prolog\":{\"color\": \"slategray\"},\"doctype\":{\"color\": \"slategray\"},\"cdata\":{\"color\": \"slategray\"},\"punctuation\":{\"color\": \"#999\"},\"namespace\":{\"opacity\": \".7\"},\"property\":{\"color\": \"#905\"},\"tag\":{\"color\": \"#905\"},\"boolean\":{\"color\": \"#905\"},\"number\":{\"color\": \"#905\"},\"constant\":{\"color\": \"#905\"},\"symbol\":{\"color\": \"#905\"},\"deleted\":{\"color\": \"#905\"},\"selector\":{\"color\": \"#690\"},\"attr_name\":{\"color\": \"#690\"},\"string\":{\"color\": \"#690\"},\"char\":{\"color\": \"#690\"},\"builtin\":{\"color\": \"#690\"},\"inserted\":{\"color\": \"#690\"},\"operator\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"},\"entity\":{\"cursor\": \"help\"},\"url\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"},\"atrule\":{\"color\": \"#07a\"},\"attr_value\":{\"color\": \"#07a\"},\"keyword\":{\"color\": \"#07a\"},\"function\":{\"color\": \"#DD4A68\"},\"class_name\":{\"color\": \"#DD4A68\"},\"regex\":{\"color\": \"#e90\"},\"important\":{\"fontWeight\": \"bold\"},\"variable\":{\"color\": \"#e90\"},\"bold\":{\"fontWeight\": \"bold\"},\"italic\":{\"fontStyle\": \"italic\"},\"css_string\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"}}");
 
 /***/ })
 /******/ ]);
