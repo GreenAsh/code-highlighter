@@ -1951,6 +1951,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(79);
 /* harmony import */ var _code_highlighter_prism_themes_interfaces__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16);
 /* harmony import */ var _code_highlighter_prism_themes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(17);
+/* harmony import */ var _code_highlighter_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(7);
+
 
 
 
@@ -1994,6 +1996,7 @@ miro.onReady(() => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 
     if (!canEditWidgets) {
         return;
     }
+    _settings_settings__WEBPACK_IMPORTED_MODULE_3__["default"].setTheme(_code_highlighter_config__WEBPACK_IMPORTED_MODULE_6__["DEFAULT_THEME"]);
     yield miro.initialize({
         extensionPoints: {
             bottomBar: () => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
