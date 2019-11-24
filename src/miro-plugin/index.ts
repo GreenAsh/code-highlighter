@@ -128,10 +128,9 @@ async function highlightWidgets(widgets:Array<IWidget>) {
             console.warn(message);
             continue;
         }
-        let updateData = {
+        let updateData:any = {
             id: widget.id,
             style: {
-                backgroundColor: ThemeContext.getInstance().currentTheme.getBackgroundColor(),
                 textAlign: 'l',
                 textAlignVertical: 't',
                 underline: -1,
@@ -139,6 +138,17 @@ async function highlightWidgets(widgets:Array<IWidget>) {
             },
             text: highlightedText
         };
+
+        let backgroundColor = ThemeContext.getInstance().currentTheme.getBackgroundColor();
+        if (backgroundColor != null){
+            updateData.style.backgroundColor = backgroundColor;
+        }
+
+        let textColor = ThemeContext.getInstance().currentTheme.getTextColor();
+        if (textColor != null){
+            updateData.style.textColor = textColor;
+        }
+
         try {
             await miro.board.widgets.update(updateData);
             count++;
