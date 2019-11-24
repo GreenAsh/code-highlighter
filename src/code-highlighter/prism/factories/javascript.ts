@@ -17,9 +17,8 @@ class JavascriptTokenFactory extends CLikeTokenFactory {
             case 'template-punctuation':
             case 'interpolation':
             case 'interpolation-punctuation':
-                return DOM.createElement('span', className);
             case 'constant':
-                return DOM.createElement('b', className);
+                return DOM.createElement('span', className);
             default:
                 return null;
         }
