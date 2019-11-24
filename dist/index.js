@@ -1823,18 +1823,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _interfaces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
 /* harmony import */ var _data_default_theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
 /* harmony import */ var _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
+/* harmony import */ var _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(21);
 
 
 
 
-const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', '#b3d4fc', _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
+const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', 'black', '#f5f2f0', _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
 const themeRegistry = new _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__["DefaultThemeRegistry"](defaultTheme);
 // register themes
 
-themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('okaidia', '#272822', _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__["default"]));
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('okaidia', '#f8f8f2', '#272822', _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__["default"]));
+
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('idea', null, null, _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__["default"]));
 //
 themeRegistry.freeze();
-_interfaces__WEBPACK_IMPORTED_MODULE_2__["ThemeContext"].getInstance().currentTheme = defaultTheme;
+_interfaces__WEBPACK_IMPORTED_MODULE_2__["ThemeContext"].getInstance().currentTheme = themeRegistry.getTheme('idea');
 
 
 /***/ }),
@@ -1887,13 +1890,17 @@ class DefaultThemeRegistry {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThemeImpl", function() { return ThemeImpl; });
 class ThemeImpl {
-    constructor(name, backgroundColor, themeData) {
+    constructor(name, textColor, backgroundColor, themeData) {
         this._name = name;
+        this._textColor = textColor;
         this._backgroundColor = backgroundColor;
         this._themeData = JSON.parse(themeData);
     }
     getName() {
         return this._name;
+    }
+    getTextColor() {
+        return this._textColor;
     }
     getBackgroundColor() {
         return this._backgroundColor;
@@ -1940,7 +1947,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\":\"slategray\"},\"prolog\":{\"color\":\"slategray\"},\"doctype\":{\"color\":\"slategray\"},\"cdata\":{\"color\":\"slategray\"},\"punctuation\":{\"color\":\"#f8f8f2\"},\"namespace\":{\"opacity\":\".7\"},\"property\":{\"color\":\"#f92672\"},\"tag\":{\"color\":\"#f92672\"},\"constant\":{\"color\":\"#f92672\"},\"symbol\":{\"color\":\"#f92672\"},\"deleted\":{\"color\":\"#f92672\"},\"boolean\":{\"color\":\"#ae81ff\"},\"number\":{\"color\":\"#ae81ff\"},\"selector\":{\"color\":\"#a6e22e\"},\"attr_name\":{\"color\":\"#a6e22e\"},\"string\":{\"color\":\"#a6e22e\"},\"char\":{\"color\":\"#a6e22e\"},\"builtin\":{\"color\":\"#a6e22e\"},\"inserted\":{\"color\":\"#a6e22e\"},\"operator\":{\"color\":\"#f8f8f2\"},\"entity\":{\"cursor\":\"help\"},\"url\":{\"color\":\"#f8f8f2\"},\"language_css__string\":{\"color\":\"#f8f8f2\"},\"style__string\":{\"color\":\"#f8f8f2\"},\"variable\":{\"color\":\"#f8f8f2\"},\"atrule\":{\"color\":\"#e6db74\"},\"attr_value\":{\"color\":\"#e6db74\"},\"function\":{\"color\":\"#e6db74\"},\"class_name\":{\"color\":\"#e6db74\"},\"keyword\":{\"color\":\"#66d9ef\"},\"regex\":{\"color\":\"#fd971f\"},\"important\":{\"fontWeight\":\"bold\"},\"bold\":{\"fontWeight\":\"bold\"},\"italic\":{\"fontStyle\":\"italic\"}, \"annotation\": {}}");
+/* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\":\"slategray\"},\"prolog\":{\"color\":\"slategray\"},\"doctype\":{\"color\":\"slategray\"},\"cdata\":{\"color\":\"slategray\"},\"punctuation\":{\"color\":\"#f8f8f2\"},\"namespace\":{\"opacity\":\".7\"},\"property\":{\"color\":\"#f92672\"},\"tag\":{\"color\":\"#f92672\"},\"constant\":{\"color\":\"#f92672\"},\"symbol\":{\"color\":\"#f92672\"},\"deleted\":{\"color\":\"#f92672\"},\"boolean\":{\"color\":\"#ae81ff\"},\"number\":{\"color\":\"#ae81ff\"},\"selector\":{\"color\":\"#a6e22e\"},\"attr_name\":{\"color\":\"#a6e22e\"},\"string\":{\"color\":\"#a6e22e\"},\"char\":{\"color\":\"#a6e22e\"},\"builtin\":{\"color\":\"#a6e22e\"},\"inserted\":{\"color\":\"#a6e22e\"},\"operator\":{\"color\":\"#f8f8f2\"},\"entity\":{\"cursor\":\"help\"},\"url\":{\"color\":\"#f8f8f2\"},\"language_css__string\":{\"color\":\"#f8f8f2\"},\"style__string\":{\"color\":\"#f8f8f2\"},\"variable\":{\"color\":\"#f8f8f2\"},\"atrule\":{\"color\":\"#e6db74\"},\"attr_value\":{\"color\":\"#e6db74\"},\"function\":{\"color\":\"#e6db74\"},\"class_name\":{\"color\":\"#e6db74\"},\"keyword\":{\"color\":\"#66d9ef\"},\"regex\":{\"color\":\"#fd971f\"},\"important\":{\"fontWeight\":\"bold\"},\"bold\":{\"fontWeight\":\"bold\"},\"italic\":{\"fontStyle\":\"italic\"},\"annotation\":{\"color\":\"#f92672\"}}");
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\":\"#808080\"},\"prolog\":{\"color\":\"#808080\"},\"doctype\":{\"color\":\"#808080\"},\"cdata\":{\"color\":\"#808080\"},\"punctuation\":{\"color\":\"#800080\"},\"interpolation\":{\"color\":\"#800080\"},\"interpolation_punctuation\":{\"color\":\"#800080\"},\"namespace\":{\"color\":\"#004A43\"},\"property\":{\"color\":\"#000080\"},\"boolean\":{\"color\":\"#000080\"},\"tag\":{\"color\":\"#000080\"},\"symbol\":{\"color\":\"#000080\"},\"deleted\":{\"color\":\"#000080\"},\"number\":{\"color\":\"#0000FF\"},\"selector\":{\"color\":\"#008000\"},\"attr_name\":{\"color\":\"#008000\"},\"string\":{\"color\":\"#008000\"},\"template_punctuation\":{\"color\":\"#008000\"},\"char\":{\"color\":\"#008000\"},\"inserted\":{\"color\":\"#008000\"},\"atrule\":{\"color\":\"#000080\"},\"attr_value\":{\"color\":\"#000080\"},\"keyword\":{\"color\":\"#000080\"},\"function\":{\"color\":\"#000080\"},\"regex\":{\"color\":\"#660E7A\"},\"important\":{\"color\":\"#660E7A\"},\"variable__parameter\":{\"color\":\"#660E7A\"},\"constant\":{\"color\":\"#660E7A\"},\"builtin\":{\"color\":\"#660E7A\"},\"function_variable\":{\"color\":\"#660E7A\"},\"class_name\":{\"color\":\"#660E7A\"},\"annotation\":{\"color\":\"#808000\"},\"template_string\":{\"color\":\"#20999D\"},\"source\":{\"color\":\"#20999D\"},\"generics\":{\"color\":\"#20999D\"}}");
 
 /***/ })
 /******/ ]);

@@ -3,17 +3,23 @@ import {tryReadFile} from "tslint/lib/files/reading";
 
 export class ThemeImpl implements Theme {
     private readonly _name: string;
+    private readonly _textColor: string | null;
     private readonly _backgroundColor: string | null;
     private readonly _themeData: any;
 
-    constructor(name: string, backgroundColor: string | null, themeData: string) {
+    constructor(name: string, textColor: string | null, backgroundColor: string | null, themeData: string) {
         this._name = name;
+        this._textColor = textColor;
         this._backgroundColor = backgroundColor;
         this._themeData = JSON.parse(themeData);
     }
 
     getName(): string {
         return this._name
+    }
+
+    getTextColor(): string | null {
+        return this._textColor;
     }
 
     getBackgroundColor(): string | null {
