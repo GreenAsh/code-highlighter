@@ -75,8 +75,9 @@ async function bottomBarAction(){
 }
 
 async function reselectWidgets(widgets: IWidget[]) {
-    let reselection = [];
-    for (let widget in widgets) {
+    let reselection:string[] = [];
+    for (let i = 0; i < widgets.length; i++) {
+        let widget = widgets[i];
         reselection.push(widget.id);
     }
     if (reselection.length != 0) {
@@ -86,8 +87,10 @@ async function reselectWidgets(widgets: IWidget[]) {
 }
 
 async function contextMenuHighlight(widgets: IWidget[]) {
+    console.log(widgets);
     let fullData:IWidget[] = [];
-    for (let widget in widgets) {
+    for (let i = 0; i < widgets.length; i++) {
+        let widget = widgets[i];
         const founded = await miro.board.widgets.get(widget);
         founded.forEach(value => fullData.push(value));
     }
