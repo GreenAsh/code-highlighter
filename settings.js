@@ -1,36 +1,33 @@
 const code = {
     highlighter: {
         settings: {
-            _langKey: 'code.highlighter.lang',
+            _langKey_fallback_1: 'code.highlighter.lang',
+            _langKey: 'ch_lang',
             _themeKey: 'ch_theme',
             _defaultLang: 'ts',
             languages:{
                 'java': 1,
-                'kotlin': 0,
-                'javastacktrace':1,
-                'clike': 1,
-                'csharp': 0,
-                'php': 0,
-                'sql': 0,
-                'jsonp': 1,
-                'http': 1,
-                'xml': 0,
-                'html': 0,
-                'css': 0,
-                'ts': 1,
-                'js': 1
+                'js': 1,
+                'ts': 1
             },
             getLang: function() {
-                const lang = localStorage.getItem(this._langKey);
-                if (this.languages[lang] === 1){
+                const lang = this._getLang(this._langKey, this._getLang(this._langKey_fallback_1, this._defaultLang));
+                if (lang !== this._defaultLang){
+                    this.setLang(lang); // overwrite fallback
+                }
+            },
+            _getLang(propertyKey, defaultValue){
+                const value = localStorage.getItem(propertyKey);
+                if (this.languages[value] === 1){
                     return lang;
                 } else {
-                    return this._defaultLang;
+                    return defaultValue;
                 }
             },
             setLang: function(value) {
                 if (this.languages[value] === 1){
                     localStorage.setItem(this._langKey, value);
+                    localStorage.removeItem(this._langKey_fallback_1); // overwrite fallback key
                 }
             },
             isLangStored(){
