@@ -25,9 +25,8 @@ const java_1 = `<g id="Layer_1">
   </g>`;
 
 const js_2 = `<g id="Layer_1">
-    <path d="M7.419,2.535 C2.777,2.293 6.525,9.297 4.601,11.438 C4.466,11.588 1.115,12.082 1.591,12.737 C2.23,13.618 3.954,12.871 4.81,14.297 C6.706,17.453 3.481,21.746 8.043,22.471" fill-opacity="0" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M16.726,4.153 C17.692,8.795 19.027,14.352 17.327,18.971 C14.346,27.074 6.646,13.662 10.881,20.239" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M12.428,3.604 C15.064,3.852 18.086,3.629 20.594,3.337" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10.431,3.96 C10.563,5.805 10.554,7.793 10.644,9.699 C11.382,25.336 5.116,21.928 4.856,16.431" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.144,9.359 C18.761,8.017 16.73,8.934 16.452,10.94 C16.036,13.938 20.28,15.235 19.821,18.545 C19.307,22.249 15.336,21.508 14.732,18.425" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>`;
 
 const ts_3 = `<g id="Layer_1">
