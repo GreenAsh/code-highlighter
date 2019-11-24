@@ -127,9 +127,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _code_highlighter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _prism_language_highlighter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
-/* harmony import */ var _factories__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
-/* harmony import */ var _prism_dom_processor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(14);
-/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16);
+/* harmony import */ var _factories__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
+/* harmony import */ var _prism_dom_processor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(15);
+/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(17);
 
 
 
@@ -1452,9 +1452,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOM", function() { return DOM; });
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prismjs_components_prism_typescript__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var prismjs_components_prism_typescript__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_typescript__WEBPACK_IMPORTED_MODULE_1__);
+
 
 const LANGUAGES = ['java', 'js', 'ts'];
-const DEFAULT_LANGUAGE = 'java';
+const DEFAULT_LANGUAGE = 'ts';
 class DOM {
     static createElement(tagName, className) {
         const result = document.createElement(tagName);
@@ -1530,14 +1533,27 @@ class DOM {
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+Prism.languages.typescript = Prism.languages.extend('javascript', {
+	// From JavaScript Prism keyword list and TypeScript language spec: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#221-reserved-words
+	'keyword': /\b(?:abstract|as|async|await|break|case|catch|class|const|constructor|continue|debugger|declare|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|is|keyof|let|module|namespace|new|null|of|package|private|protected|public|readonly|return|require|set|static|super|switch|this|throw|try|type|typeof|var|void|while|with|yield)\b/,
+	'builtin': /\b(?:string|Function|any|number|boolean|Array|symbol|console|Promise|unknown|never)\b/,
+});
+
+Prism.languages.ts = Prism.languages.typescript;
+
+
+/***/ }),
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "factories", function() { return factories; });
-/* harmony import */ var _clike__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
-/* harmony import */ var _java__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
-/* harmony import */ var _javascript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+/* harmony import */ var _clike__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
+/* harmony import */ var _java__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+/* harmony import */ var _javascript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
 
 
 
@@ -1549,13 +1565,13 @@ factories.set('ts', _javascript__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLikeTokenFactory", function() { return CLikeTokenFactory; });
-/* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
+/* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
 /* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 
@@ -1583,7 +1599,7 @@ class CLikeTokenFactory {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 Prism.languages.clike = {
@@ -1619,7 +1635,7 @@ Prism.languages.clike = {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1627,7 +1643,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
-/* harmony import */ var _clike__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _clike__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
 
 
 
@@ -1651,15 +1667,15 @@ class JavaTokenFactory extends _clike__WEBPACK_IMPORTED_MODULE_2__["CLikeTokenFa
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
+/* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
 /* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
-/* harmony import */ var _clike__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _clike__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
 
 
 
@@ -1688,14 +1704,14 @@ class JavascriptTokenFactory extends _clike__WEBPACK_IMPORTED_MODULE_2__["CLikeT
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrismDOMProcessor", function() { return PrismDOMProcessor; });
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
-/* harmony import */ var _themes_interfaces__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
+/* harmony import */ var _themes_interfaces__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
 
 
 class PrismDOMProcessor {
@@ -1778,7 +1794,7 @@ class PrismDOMProcessor {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1809,18 +1825,18 @@ class ThemeContext {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "themeRegistry", function() { return themeRegistry; });
-/* harmony import */ var _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17);
-/* harmony import */ var _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
-/* harmony import */ var _interfaces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _data_default_theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
-/* harmony import */ var _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
-/* harmony import */ var _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(21);
+/* harmony import */ var _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18);
+/* harmony import */ var _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var _interfaces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var _data_default_theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20);
+/* harmony import */ var _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21);
+/* harmony import */ var _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(22);
 
 
 
@@ -1838,7 +1854,7 @@ _interfaces__WEBPACK_IMPORTED_MODULE_2__["ThemeContext"].getInstance().currentTh
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1880,7 +1896,7 @@ class DefaultThemeRegistry {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1931,7 +1947,7 @@ class ThemeImpl {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1939,7 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\": \"slategray\"},\"prolog\":{\"color\": \"slategray\"},\"doctype\":{\"color\": \"slategray\"},\"cdata\":{\"color\": \"slategray\"},\"punctuation\":{\"color\": \"#999\"},\"namespace\":{\"opacity\": \".7\"},\"property\":{\"color\": \"#905\"},\"tag\":{\"color\": \"#905\"},\"boolean\":{\"color\": \"#905\"},\"number\":{\"color\": \"#905\"},\"constant\":{\"color\": \"#905\"},\"symbol\":{\"color\": \"#905\"},\"deleted\":{\"color\": \"#905\"},\"selector\":{\"color\": \"#690\"},\"attr_name\":{\"color\": \"#690\"},\"string\":{\"color\": \"#690\"},\"char\":{\"color\": \"#690\"},\"builtin\":{\"color\": \"#690\"},\"inserted\":{\"color\": \"#690\"},\"operator\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"},\"entity\":{\"cursor\": \"help\"},\"url\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"},\"atrule\":{\"color\": \"#07a\"},\"attr_value\":{\"color\": \"#07a\"},\"keyword\":{\"color\": \"#07a\"},\"function\":{\"color\": \"#DD4A68\"},\"class_name\":{\"color\": \"#DD4A68\"},\"regex\":{\"color\": \"#e90\"},\"important\":{\"fontWeight\": \"bold\"},\"variable\":{\"color\": \"#e90\"},\"bold\":{\"fontWeight\": \"bold\"},\"italic\":{\"fontStyle\": \"italic\"},\"css_string\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\",\"annotation\": {}}}");
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1947,7 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\":\"slategray\"},\"prolog\":{\"color\":\"slategray\"},\"doctype\":{\"color\":\"slategray\"},\"cdata\":{\"color\":\"slategray\"},\"punctuation\":{\"color\":\"#f8f8f2\"},\"namespace\":{\"opacity\":\".7\"},\"property\":{\"color\":\"#f92672\"},\"tag\":{\"color\":\"#f92672\"},\"constant\":{\"color\":\"#f92672\"},\"symbol\":{\"color\":\"#f92672\"},\"deleted\":{\"color\":\"#f92672\"},\"boolean\":{\"color\":\"#ae81ff\"},\"number\":{\"color\":\"#ae81ff\"},\"selector\":{\"color\":\"#a6e22e\"},\"attr_name\":{\"color\":\"#a6e22e\"},\"string\":{\"color\":\"#a6e22e\"},\"char\":{\"color\":\"#a6e22e\"},\"builtin\":{\"color\":\"#a6e22e\"},\"inserted\":{\"color\":\"#a6e22e\"},\"operator\":{\"color\":\"#f8f8f2\"},\"entity\":{\"cursor\":\"help\"},\"url\":{\"color\":\"#f8f8f2\"},\"language_css__string\":{\"color\":\"#f8f8f2\"},\"style__string\":{\"color\":\"#f8f8f2\"},\"variable\":{\"color\":\"#f8f8f2\"},\"atrule\":{\"color\":\"#e6db74\"},\"attr_value\":{\"color\":\"#e6db74\"},\"function\":{\"color\":\"#e6db74\"},\"class_name\":{\"color\":\"#e6db74\"},\"keyword\":{\"color\":\"#66d9ef\"},\"regex\":{\"color\":\"#fd971f\"},\"important\":{\"fontWeight\":\"bold\"},\"bold\":{\"fontWeight\":\"bold\"},\"italic\":{\"fontStyle\":\"italic\"},\"annotation\":{\"color\":\"#f92672\"}}");
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
