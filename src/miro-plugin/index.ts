@@ -1,7 +1,7 @@
+import IWidget = SDK.IWidget;
 import * as Sentry from '@sentry/browser';
 import {default as highlighter} from '../code-highlighter/prism';
 import {default as settings} from '../settings/settings'
-import IWidget = SDK.IWidget;
 
 function getWidgetText(widget: any): string {
     if (widget.text){
@@ -65,6 +65,7 @@ async function bottomBarAction(){
 }
 
 async function contextMenuHighlight(widgets: IWidget[]){
+    console.log(widgets);
     if (widgets.length === 0){
         await showSettings();
     } else {
