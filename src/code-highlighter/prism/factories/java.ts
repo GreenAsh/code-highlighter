@@ -1,24 +1,19 @@
 import 'prismjs/components/prism-java';
 import {DOM} from "../../config";
+import {CLikeTokenFactory} from "./clike";
 
-class JavaTokenFactory implements TokenFactory {
+class JavaTokenFactory extends CLikeTokenFactory {
     create(name: String, className: string): Node | false | null {
+        let result = super.create(name, className);
+        if (result !== null) {
+            return result;
+        }
         switch (name) {
-            case 'string':
-            case 'boolean':
-            case 'number':
-            case 'function':
             case 'namespace':
             case 'generics':
-            case 'comment':
-                return DOM.createElement('span');
-            case 'keyword':
-            case 'class-name':
+                return DOM.createElement('span', className);
             case 'annotation':
-                return DOM.createElement('b');
-            case 'operator':
-            case 'punctuation':
-                return false;
+                return DOM.createElement('b', className);
             default:
                 return null;
         }

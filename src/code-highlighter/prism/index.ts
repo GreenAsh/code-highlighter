@@ -5,6 +5,7 @@ import {PrismLanguageHighlighter} from "./prism-language-highlighter";
 import {LANGUAGES} from "../config";
 import {factories} from "./factories";
 import {PrismDOMProcessor} from "./prism-dom-processor";
+import "./themes";
 
 LANGUAGES.forEach(lang => {
     const tokenFactory = factories.get(lang);
@@ -12,7 +13,7 @@ LANGUAGES.forEach(lang => {
         console.error(`Language isn't ${lang} implemented`);
     } else {
         CodeHighlighterImpl.getInstance().register(
-            new PrismLanguageHighlighter(lang, new PrismDOMProcessor(tokenFactory))
+            new PrismLanguageHighlighter(lang, new PrismDOMProcessor(lang, tokenFactory))
         );
     }
 });
