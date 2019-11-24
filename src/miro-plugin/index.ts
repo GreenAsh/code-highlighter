@@ -71,7 +71,6 @@ async function bottomBarAction(){
         await reselectWidgets(widgets);
         await highlightWidgets(widgets);
     }
-    await contextMenuHighlight(widgets);
 }
 
 async function reselectWidgets(widgets: IWidget[]) {
@@ -131,6 +130,7 @@ async function highlightWidgets(widgets:Array<IWidget>) {
         let updateData = {
             id: widget.id,
             style: {
+                backgroundColor: ThemeContext.getInstance().currentTheme.getBackgroundColor(),
                 textAlign: 'l',
                 textAlignVertical: 't',
                 underline: -1,
