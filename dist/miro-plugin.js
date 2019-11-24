@@ -1989,7 +1989,6 @@ function bottomBarAction() {
             yield reselectWidgets(widgets);
             yield highlightWidgets(widgets);
         }
-        yield contextMenuHighlight(widgets);
     });
 }
 function reselectWidgets(widgets) {
@@ -2052,6 +2051,7 @@ function highlightWidgets(widgets) {
             let updateData = {
                 id: widget.id,
                 style: {
+                    backgroundColor: _code_highlighter_prism_themes_interfaces__WEBPACK_IMPORTED_MODULE_4__["ThemeContext"].getInstance().currentTheme.getBackgroundColor(),
                     textAlign: 'l',
                     textAlignVertical: 't',
                     underline: -1,
