@@ -1822,13 +1822,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
 /* harmony import */ var _interfaces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
 /* harmony import */ var _data_default_theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
+/* harmony import */ var _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
 
 
 
 
-const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', null, _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
+const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', '#b3d4fc', _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
 const themeRegistry = new _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__["DefaultThemeRegistry"](defaultTheme);
 // register themes
+
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('okaidia', '#272822', _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__["default"]));
+//
 themeRegistry.freeze();
 _interfaces__WEBPACK_IMPORTED_MODULE_2__["ThemeContext"].getInstance().currentTheme = defaultTheme;
 
@@ -1854,6 +1858,9 @@ class DefaultThemeRegistry {
             return this._defaultTheme;
         }
         return result;
+    }
+    listThemes() {
+        return Array.from(this._theme2Object.keys());
     }
     freeze() {
         if (!this._freezed) {
@@ -1925,7 +1932,15 @@ class ThemeImpl {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\": \"slategray\"},\"prolog\":{\"color\": \"slategray\"},\"doctype\":{\"color\": \"slategray\"},\"cdata\":{\"color\": \"slategray\"},\"punctuation\":{\"color\": \"#999\"},\"namespace\":{\"opacity\": \".7\"},\"property\":{\"color\": \"#905\"},\"tag\":{\"color\": \"#905\"},\"boolean\":{\"color\": \"#905\"},\"number\":{\"color\": \"#905\"},\"constant\":{\"color\": \"#905\"},\"symbol\":{\"color\": \"#905\"},\"deleted\":{\"color\": \"#905\"},\"selector\":{\"color\": \"#690\"},\"attr_name\":{\"color\": \"#690\"},\"string\":{\"color\": \"#690\"},\"char\":{\"color\": \"#690\"},\"builtin\":{\"color\": \"#690\"},\"inserted\":{\"color\": \"#690\"},\"operator\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"},\"entity\":{\"cursor\": \"help\"},\"url\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"},\"atrule\":{\"color\": \"#07a\"},\"attr_value\":{\"color\": \"#07a\"},\"keyword\":{\"color\": \"#07a\"},\"function\":{\"color\": \"#DD4A68\"},\"class_name\":{\"color\": \"#DD4A68\"},\"regex\":{\"color\": \"#e90\"},\"important\":{\"fontWeight\": \"bold\"},\"variable\":{\"color\": \"#e90\"},\"bold\":{\"fontWeight\": \"bold\"},\"italic\":{\"fontStyle\": \"italic\"},\"css_string\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"}}");
+/* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\": \"slategray\"},\"prolog\":{\"color\": \"slategray\"},\"doctype\":{\"color\": \"slategray\"},\"cdata\":{\"color\": \"slategray\"},\"punctuation\":{\"color\": \"#999\"},\"namespace\":{\"opacity\": \".7\"},\"property\":{\"color\": \"#905\"},\"tag\":{\"color\": \"#905\"},\"boolean\":{\"color\": \"#905\"},\"number\":{\"color\": \"#905\"},\"constant\":{\"color\": \"#905\"},\"symbol\":{\"color\": \"#905\"},\"deleted\":{\"color\": \"#905\"},\"selector\":{\"color\": \"#690\"},\"attr_name\":{\"color\": \"#690\"},\"string\":{\"color\": \"#690\"},\"char\":{\"color\": \"#690\"},\"builtin\":{\"color\": \"#690\"},\"inserted\":{\"color\": \"#690\"},\"operator\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"},\"entity\":{\"cursor\": \"help\"},\"url\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\"},\"atrule\":{\"color\": \"#07a\"},\"attr_value\":{\"color\": \"#07a\"},\"keyword\":{\"color\": \"#07a\"},\"function\":{\"color\": \"#DD4A68\"},\"class_name\":{\"color\": \"#DD4A68\"},\"regex\":{\"color\": \"#e90\"},\"important\":{\"fontWeight\": \"bold\"},\"variable\":{\"color\": \"#e90\"},\"bold\":{\"fontWeight\": \"bold\"},\"italic\":{\"fontStyle\": \"italic\"},\"css_string\":{\"color\": \"#9a6e3a\",\"background\": \"hsla(0, 0%, 100%, .5)\",\"annotation\": {}}}");
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\":\"slategray\"},\"prolog\":{\"color\":\"slategray\"},\"doctype\":{\"color\":\"slategray\"},\"cdata\":{\"color\":\"slategray\"},\"punctuation\":{\"color\":\"#f8f8f2\"},\"namespace\":{\"opacity\":\".7\"},\"property\":{\"color\":\"#f92672\"},\"tag\":{\"color\":\"#f92672\"},\"constant\":{\"color\":\"#f92672\"},\"symbol\":{\"color\":\"#f92672\"},\"deleted\":{\"color\":\"#f92672\"},\"boolean\":{\"color\":\"#ae81ff\"},\"number\":{\"color\":\"#ae81ff\"},\"selector\":{\"color\":\"#a6e22e\"},\"attr_name\":{\"color\":\"#a6e22e\"},\"string\":{\"color\":\"#a6e22e\"},\"char\":{\"color\":\"#a6e22e\"},\"builtin\":{\"color\":\"#a6e22e\"},\"inserted\":{\"color\":\"#a6e22e\"},\"operator\":{\"color\":\"#f8f8f2\"},\"entity\":{\"cursor\":\"help\"},\"url\":{\"color\":\"#f8f8f2\"},\"language_css__string\":{\"color\":\"#f8f8f2\"},\"style__string\":{\"color\":\"#f8f8f2\"},\"variable\":{\"color\":\"#f8f8f2\"},\"atrule\":{\"color\":\"#e6db74\"},\"attr_value\":{\"color\":\"#e6db74\"},\"function\":{\"color\":\"#e6db74\"},\"class_name\":{\"color\":\"#e6db74\"},\"keyword\":{\"color\":\"#66d9ef\"},\"regex\":{\"color\":\"#fd971f\"},\"important\":{\"fontWeight\":\"bold\"},\"bold\":{\"fontWeight\":\"bold\"},\"italic\":{\"fontStyle\":\"italic\"}, \"annotation\": {}}");
 
 /***/ })
 /******/ ]);

@@ -20,6 +20,10 @@ export class DefaultThemeRegistry implements ThemeRegistry, ThemeRegistrar {
         return result;
     }
 
+    listThemes(): string[] {
+        return Array.from(this._theme2Object.keys());
+    }
+
     freeze(): void {
         if (!this._freezed) {
             this._freezed = true;
