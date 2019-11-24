@@ -1951,6 +1951,21 @@ const icon24 = `<g id="Layer_1">
     <path d="M9.514,2.535 C4.872,2.293 8.62,9.297 6.696,11.438 C6.561,11.588 3.21,12.082 3.686,12.737 C4.325,13.618 6.049,12.871 6.905,14.297 C8.801,17.453 5.576,21.746 10.138,22.471" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M14.411,22.42 C19.04,22.845 15.567,15.729 17.574,13.674 C17.714,13.53 21.082,13.171 20.632,12.501 C20.027,11.599 18.276,12.274 17.476,10.822 C15.704,7.607 19.094,3.463 14.563,2.561" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>`;
+const java_1 = `<g id="Layer_1">
+    <path d="M7.419,2.535 C2.777,2.293 6.525,9.297 4.601,11.438 C4.466,11.588 1.115,12.082 1.591,12.737 C2.23,13.618 3.954,12.871 4.81,14.297 C6.706,17.453 3.481,21.746 8.043,22.471" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.893,5.319 C16.714,9.312 17.849,14.093 16.404,18.068 C13.87,25.039 7.323,13.5 10.924,19.159" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.239,4.846 C14.48,5.059 17.049,4.867 19.181,4.616" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>`;
+const js_2 = `<g id="Layer_1">
+    <path d="M10.052,5.284 C10.159,6.843 10.151,8.523 10.224,10.133 C10.82,23.346 5.757,20.467 5.548,15.821" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.323,9.855 C16.206,8.721 14.565,9.496 14.341,11.191 C14.005,13.724 17.434,14.82 17.063,17.617 C16.647,20.747 13.439,20.12 12.951,17.516" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>`;
+const ts_3 = `<g id="Layer_1">
+    <path d="M16.069,9.002 C14.848,8.102 13.459,9.095 13.532,10.738 C13.641,13.193 16.994,13.695 17.115,16.407 C17.249,19.441 14.178,19.35 13.295,16.956" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.143,4.863 C5.029,10.259 7.405,25.547 11.653,15.221" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.854,9.561 C5.452,9.819 7.16,9.803 8.822,9.808" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.375,21.712 C22.004,22.136 18.531,15.02 20.537,12.966 C20.678,12.822 24.045,12.463 23.596,11.793 C22.991,10.891 21.24,11.566 20.439,10.113 C18.668,6.898 22.058,2.755 17.527,1.853" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>`;
 const MAX_TEXT_SIZE = 5300;
 miro.onReady(() => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
     const authorized = yield miro.isAuthorized();
@@ -1972,9 +1987,23 @@ miro.onReady(() => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 
             }),
             getWidgetMenuItems: () => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
                 return [{
-                        tooltip: 'Code Highlighter',
-                        svgIcon: icon24,
-                        onClick: contextMenuHighlight
+                        tooltip: 'Java',
+                        svgIcon: java_1,
+                        onClick: (widgets) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
+                            yield contextMenuHighlight('java', widgets);
+                        })
+                    }, {
+                        tooltip: 'js',
+                        svgIcon: js_2,
+                        onClick: (widgets) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
+                            yield contextMenuHighlight('js', widgets);
+                        })
+                    }, {
+                        tooltip: 'ts',
+                        svgIcon: ts_3,
+                        onClick: (widgets) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
+                            yield contextMenuHighlight('ts', widgets);
+                        })
                     }];
             })
         }
@@ -1999,7 +2028,7 @@ function bottomBarAction() {
         }
         else {
             yield reselectWidgets(widgets);
-            yield highlightWidgets(widgets);
+            yield highlightWidgets(_settings_settings__WEBPACK_IMPORTED_MODULE_3__["default"].getLang(), widgets);
         }
     });
 }
@@ -2016,16 +2045,15 @@ function reselectWidgets(widgets) {
         }
     });
 }
-function contextMenuHighlight(widgets) {
+function contextMenuHighlight(lang, widgets) {
     return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-        console.log(widgets);
         let fullData = [];
         for (let i = 0; i < widgets.length; i++) {
             let widget = widgets[i];
             const founded = yield miro.board.widgets.get(widget);
             founded.forEach(value => fullData.push(value));
         }
-        yield highlightWidgets(fullData);
+        yield highlightWidgets(lang, fullData);
     });
 }
 function showSettings() {
@@ -2036,7 +2064,7 @@ function showSettings() {
         });
     });
 }
-function highlightWidgets(widgets) {
+function highlightWidgets(lang, widgets) {
     return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
         if (_code_highlighter_prism_themes_interfaces__WEBPACK_IMPORTED_MODULE_4__["ThemeContext"].getInstance().currentTheme.getName() != _settings_settings__WEBPACK_IMPORTED_MODULE_3__["default"].getTheme()) {
             _code_highlighter_prism_themes_interfaces__WEBPACK_IMPORTED_MODULE_4__["ThemeContext"].getInstance().currentTheme = _code_highlighter_prism_themes__WEBPACK_IMPORTED_MODULE_5__["themeRegistry"].getTheme(_settings_settings__WEBPACK_IMPORTED_MODULE_3__["default"].getTheme());
@@ -2053,7 +2081,7 @@ function highlightWidgets(widgets) {
             if (!plainText || plainText == '') {
                 return;
             }
-            let highlightedText = yield _code_highlighter_prism__WEBPACK_IMPORTED_MODULE_2__["default"].highlight(_settings_settings__WEBPACK_IMPORTED_MODULE_3__["default"].getLang(), plainText);
+            let highlightedText = yield _code_highlighter_prism__WEBPACK_IMPORTED_MODULE_2__["default"].highlight(lang, plainText);
             if (highlightedText.length >= MAX_TEXT_SIZE) {
                 miro.showErrorNotification('Highlight failed, due to possible loss of data');
                 const message = `Highlighted length: ${highlightedText.length} Cleaned length: ${plainText.length}  Widget text length: ${widgetText.length}`;
@@ -8836,18 +8864,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    _langKey: 'code.highlighter.lang',
+    _langKey_fallback_1: 'code.highlighter.lang',
+    _langKey: 'ch_lang',
     _themeKey: 'ch_theme',
     _defaultLang: _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_LANGUAGE"],
     languages: _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["LANGUAGES"],
     getLang() {
-        return this._defaultLang;
-        // const lang = localStorage.getItem(this._langKey);
-        // if (this.languages[lang] === 1){
-        //     return lang;
-        // } else {
-        //     return this._defaultLang;
-        // }
+        const lang = this._getLang(this._langKey, this._getLang(this._langKey_fallback_1, this._defaultLang));
+        if (lang !== this._defaultLang) {
+            this.setLang(lang); // overwrite fallback
+        }
+        return lang;
+    },
+    _getLang(propertyKey, defaultValue) {
+        const value = localStorage.getItem(propertyKey);
+        for (let i = 0; i < _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["LANGUAGES"].length; i++) {
+            if (value === _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["LANGUAGES"][i]) {
+                return value;
+            }
+        }
+        return defaultValue;
+    },
+    setLang(value) {
+        // todo cycle and previous one
+        for (let i = 0; i < _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["LANGUAGES"].length; i++) {
+            if (value === _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["LANGUAGES"][i]) {
+                localStorage.setItem(this._langKey, value);
+                localStorage.removeItem(this._langKey_fallback_1); // overwrite fallback key
+            }
+        }
     },
     getTheme() {
         let theme = localStorage.getItem(this._themeKey);
