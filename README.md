@@ -9,8 +9,8 @@ Code highlight plugin for miro.com.
 
 #### Highlight
 Select widgets and press the plugin button
-<img src="img/help_highlight_selection.gif" />
+<img src="docs/img/help_highlight_selection.gif" />
 
 #### Open settings
 Click on the plugin button without selecting any widget
-<img src="img/help_open_settings.gif" width="100%" />
+<img src="docs/img/help_open_settings.gif" width="100%" />
