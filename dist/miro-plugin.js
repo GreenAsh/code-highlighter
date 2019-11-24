@@ -2067,7 +2067,6 @@ function highlightWidgets(widgets) {
             let updateData = {
                 id: widget.id,
                 style: {
-                    backgroundColor: _code_highlighter_prism_themes_interfaces__WEBPACK_IMPORTED_MODULE_4__["ThemeContext"].getInstance().currentTheme.getBackgroundColor(),
                     textAlign: 'l',
                     textAlignVertical: 't',
                     underline: -1,
@@ -2075,6 +2074,14 @@ function highlightWidgets(widgets) {
                 },
                 text: highlightedText
             };
+            let backgroundColor = _code_highlighter_prism_themes_interfaces__WEBPACK_IMPORTED_MODULE_4__["ThemeContext"].getInstance().currentTheme.getBackgroundColor();
+            if (backgroundColor != null) {
+                updateData.style.backgroundColor = backgroundColor;
+            }
+            let textColor = _code_highlighter_prism_themes_interfaces__WEBPACK_IMPORTED_MODULE_4__["ThemeContext"].getInstance().currentTheme.getTextColor();
+            if (textColor != null) {
+                updateData.style.textColor = textColor;
+            }
             try {
                 yield miro.board.widgets.update(updateData);
                 count++;
