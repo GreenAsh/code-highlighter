@@ -9,10 +9,9 @@ export class CLikeTokenFactory implements TokenFactory {
             case 'number':
             case 'function':
             case 'comment':
-                return DOM.createElement('span', className);
             case 'keyword':
             case 'class-name':
-                return DOM.createElement('b', className);
+                return DOM.createElement('span', className);
             case 'operator':
             case 'punctuation':
                 return false;
