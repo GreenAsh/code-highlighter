@@ -1,6 +1,6 @@
+import * as Sentry from '@sentry/browser';
 import {default as highlighter} from '../code-highlighter/prism';
 import {default as settings} from '../settings/settings'
-import * as Sentry from '@sentry/browser';
 import IWidget = SDK.IWidget;
 
 function getWidgetText(widget: any): string {
@@ -37,6 +37,13 @@ miro.onReady(async () => {
                     svgIcon: icon24,
                     onClick: bottomBarAction
                 };
+            },
+            getWidgetMenuItems: async () => {
+                return  [{
+                    tooltip: 'Code Highlighter',
+                    svgIcon: icon24,
+                    onClick: contextMenuHighlight
+                }];
             }
         }
     })
@@ -54,6 +61,10 @@ async function hasPermission(permission: String) {
 
 async function bottomBarAction(){
     const widgets = await miro.board.selection.get();
+    await contextMenuHighlight(widgets);
+}
+
+async function contextMenuHighlight(widgets: IWidget[]){
     if (widgets.length === 0){
         await showSettings();
     } else {
