@@ -1,7 +1,7 @@
 import 'prismjs/components/prism-clike';
 import {DOM} from "../../config";
 
-class ClikeTokenFactory implements TokenFactory {
+export class CLikeTokenFactory implements TokenFactory {
     create(name: String, className: string): Node | false | null {
         switch (name) {
             case 'string':
@@ -9,10 +9,10 @@ class ClikeTokenFactory implements TokenFactory {
             case 'number':
             case 'function':
             case 'comment':
-                return DOM.createElement('span');
+                return DOM.createElement('span', className);
             case 'keyword':
             case 'class-name':
-                return DOM.createElement('b');
+                return DOM.createElement('b', className);
             case 'operator':
             case 'punctuation':
                 return false;
@@ -22,4 +22,4 @@ class ClikeTokenFactory implements TokenFactory {
     }
 }
 
-export default new ClikeTokenFactory();
+export default new CLikeTokenFactory();
