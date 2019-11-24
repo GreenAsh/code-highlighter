@@ -1416,6 +1416,7 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LANGUAGES", function() { return LANGUAGES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_LANGUAGE", function() { return DEFAULT_LANGUAGE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_THEME", function() { return DEFAULT_THEME; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOM", function() { return DOM; });
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
 /* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_0__);
@@ -1425,6 +1426,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const LANGUAGES = ['java', 'js', 'ts'];
 const DEFAULT_LANGUAGE = 'ts';
+const DEFAULT_THEME = 'okaidia';
 class DOM {
     static createElement(tagName, className) {
         const result = document.createElement(tagName);
@@ -8884,7 +8886,7 @@ __webpack_require__.r(__webpack_exports__);
     _langKey: 'ch_lang',
     _themeKey: 'ch_theme',
     _defaultLang: _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_LANGUAGE"],
-    _defaultTheme: 'idea',
+    _defaultTheme: _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_THEME"],
     languages: _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["LANGUAGES"],
     getLang() {
         const lang = this._getLang(this._langKey, this._getLang(this._langKey_fallback_1, this._defaultLang));
