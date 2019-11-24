@@ -113,7 +113,8 @@ async function highlightWidgets(widgets:Array<IWidget>) {
     }
     let count = 0;
 
-    for (let widget in widgets) {
+    for (let i = 0; i < widgets.length; i++) {
+        let widget = widgets[i];
         let widgetText = getWidgetText(widget);
         let plainText = getPlainText(widgetText);
         if (!plainText || plainText == '') {
