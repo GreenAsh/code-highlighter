@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>miro-code-highlighter-plugin feedback</title>
+    <script type="text/javascript" src="https://miro.com/app/static/sdk.1.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://miro.com/app/static/styles.1.0.css"/>
+    <!-- for error logging -->
+    <script src="https://browser.sentry-cdn.com/5.9.1/bundle.min.js" integrity="sha384-/x1aHz0nKRd6zVUazsV6CbQvjJvr6zQL2CHbQZf3yoLkezyEtZUpqUNnOLW9Nt3v" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        Sentry.init({
+            dsn: 'https://af5a66fee3174f318ab6c6ccf6ae2071@sentry.io/1831923'
+        });
+    </script>
+
+    <!--    <script type="text/javascript" src="prism.js"></script>-->
+    <!--    <script type="text/javascript" src="code-highlighter.js"></script>-->
+    <!--    <script type="text/javascript" src="src/settings/settings.ts"></script>-->
+    <!--    <script type="text/javascript" src="dist/index.js"></script>-->
+    <script type="text/javascript" src="dist/miro-plugin.js"></script>
+</head>
+<body>
+<div style="padding: 20px 10px">
+    <a href="javascript:closeModal()" style="position: absolute; right: 20px; top: 10px;">close</a>
+    <section style="padding: 10px; line-height: 58px; text-align: center;">
+        <textarea id="feedback_area" class="miro-input" style="width: 400px; height: 200px; margin-bottom: 10px;" maxlength="1000" aria-label="feedback"></textarea>
+        <br />
+        <button class="miro-btn miro-btn--primary miro-btn--small" onclick="sendFeedback()">Send Feedback</button>
+    </section>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    function sendFeedback() {
+        try {
+            const feedbackText = document.getElementById('feedback_area').value;
+            document.getElementById('feedback_area').disabled = true;
+            if (feedbackText && feedbackText.length && feedbackText.length > 1) {
+                miro.showNotification('Thank you');
+                throw new Error(`[feedback]${feedbackText}`);
+            }
+        } finally {
+            document.getElementById('feedback_area').value = '';
+            closeModal();
+        }
+    }
+    function closeModal() {
+        miro.board.ui.closeModal();
+    }
+</script>
