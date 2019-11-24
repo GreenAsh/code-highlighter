@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="24" height="24" viewBox="0, 0, 24, 24">
   <g id="Layer_1">
-    <path d="M10.052,5.284 C10.159,6.843 10.151,8.523 10.224,10.133 C10.82,23.346 5.757,20.467 5.548,15.821" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M17.323,9.855 C16.206,8.721 14.565,9.496 14.341,11.191 C14.005,13.724 17.434,14.82 17.063,17.617 C16.647,20.747 13.439,20.12 12.951,17.516" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10.431,3.96 C10.563,5.805 10.554,7.793 10.644,9.699 C11.382,25.336 5.116,21.928 4.856,16.431" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.144,9.359 C18.761,8.017 16.73,8.934 16.452,10.94 C16.036,13.938 20.28,15.235 19.821,18.545 C19.307,22.249 15.336,21.508 14.732,18.425" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>
