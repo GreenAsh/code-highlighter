@@ -8,6 +8,7 @@ export default {
     _langKey: 'ch_lang',
     _themeKey: 'ch_theme',
     _defaultLang: DEFAULT_LANGUAGE,
+    _defaultTheme: 'idea',
     languages: LANGUAGES,
     getLang(): string {
         const lang = this._getLang(this._langKey, this._getLang(this._langKey_fallback_1, this._defaultLang));
@@ -37,7 +38,7 @@ export default {
     getTheme(): string {
         let theme = localStorage.getItem(this._themeKey);
         if (theme == null) {
-            return themeRegistry.getTheme('default').getName();
+            return themeRegistry.getTheme(this._defaultTheme).getName();
         }
         return themeRegistry.getTheme(theme).getName();
     },
