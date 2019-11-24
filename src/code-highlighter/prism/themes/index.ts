@@ -11,7 +11,7 @@ import okadiaData from "./data/okaidia.theme"
 themeRegistry.register(new ThemeImpl('okaidia', '#f8f8f2', '#272822', okadiaData));
 
 import ideaData from "./data/idea.theme"
-themeRegistry.register(new ThemeImpl('idea', null, null, ideaData));
+themeRegistry.register(new ThemeImpl('idea', 'black', 'transparent', ideaData));
 //
 themeRegistry.freeze();
 

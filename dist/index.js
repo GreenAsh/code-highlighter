@@ -1568,10 +1568,9 @@ class CLikeTokenFactory {
             case 'number':
             case 'function':
             case 'comment':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span', className);
             case 'keyword':
             case 'class-name':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('b', className);
+                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span', className);
             case 'operator':
             case 'punctuation':
                 return false;
@@ -1641,9 +1640,8 @@ class JavaTokenFactory extends _clike__WEBPACK_IMPORTED_MODULE_2__["CLikeTokenFa
         switch (name) {
             case 'namespace':
             case 'generics':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span', className);
             case 'annotation':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('b', className);
+                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span', className);
             default:
                 return null;
         }
@@ -1679,9 +1677,8 @@ class JavascriptTokenFactory extends _clike__WEBPACK_IMPORTED_MODULE_2__["CLikeT
             case 'template-punctuation':
             case 'interpolation':
             case 'interpolation-punctuation':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span', className);
             case 'constant':
-                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('b', className);
+                return _config__WEBPACK_IMPORTED_MODULE_1__["DOM"].createElement('span', className);
             default:
                 return null;
         }
@@ -1834,7 +1831,7 @@ const themeRegistry = new _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__["De
 
 themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('okaidia', '#f8f8f2', '#272822', _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
-themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('idea', null, null, _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__["default"]));
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('idea', 'black', 'transparent', _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__["default"]));
 //
 themeRegistry.freeze();
 _interfaces__WEBPACK_IMPORTED_MODULE_2__["ThemeContext"].getInstance().currentTheme = themeRegistry.getTheme('idea');

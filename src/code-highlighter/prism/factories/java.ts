@@ -11,9 +11,8 @@ class JavaTokenFactory extends CLikeTokenFactory {
         switch (name) {
             case 'namespace':
             case 'generics':
-                return DOM.createElement('span', className);
             case 'annotation':
-                return DOM.createElement('b', className);
+                return DOM.createElement('span', className);
             default:
                 return null;
         }
