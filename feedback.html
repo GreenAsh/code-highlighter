@@ -37,12 +37,14 @@
             const feedbackText = document.getElementById('feedback_area').value;
             document.getElementById('feedback_area').disabled = true;
             if (feedbackText && feedbackText.length && feedbackText.length > 1) {
+                Sentry.captureMessage(`[feedback] ${feedbackText}`);
                 miro.showNotification('Thank you');
-                throw new Error(`[feedback]${feedbackText}`);
             }
         } finally {
-            document.getElementById('feedback_area').value = '';
-            closeModal();
+            setTimeout(()=> {
+                document.getElementById('feedback_area').value = '';
+                closeModal();
+            }, 50);
         }
     }
     function closeModal() {
