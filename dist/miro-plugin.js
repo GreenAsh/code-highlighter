@@ -1995,7 +1995,8 @@ function bottomBarAction() {
 function reselectWidgets(widgets) {
     return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
         let reselection = [];
-        for (let widget in widgets) {
+        for (let i = 0; i < widgets.length; i++) {
+            let widget = widgets[i];
             reselection.push(widget.id);
         }
         if (reselection.length != 0) {
@@ -2006,8 +2007,10 @@ function reselectWidgets(widgets) {
 }
 function contextMenuHighlight(widgets) {
     return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+        console.log(widgets);
         let fullData = [];
-        for (let widget in widgets) {
+        for (let i = 0; i < widgets.length; i++) {
+            let widget = widgets[i];
             const founded = yield miro.board.widgets.get(widget);
             founded.forEach(value => fullData.push(value));
         }
