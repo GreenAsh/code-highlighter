@@ -1,6 +1,7 @@
 export interface Theme {
     getName(): string;
     getBackgroundColor(): string | null;
+    getTextColor(): string | null;
     applyStyle(lang:string, classNames:string, element: HTMLElement):void
 }
 

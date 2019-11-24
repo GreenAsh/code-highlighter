@@ -3,13 +3,16 @@ import {ThemeImpl} from "./ThemeImpl";
 import {ThemeContext} from "./interfaces";
 
 import defaultData from "./data/default.theme"
-const defaultTheme = new ThemeImpl('default', '#b3d4fc', defaultData);
+const defaultTheme = new ThemeImpl('default','black',  '#f5f2f0', defaultData);
 
 export const themeRegistry = new DefaultThemeRegistry(defaultTheme);
 // register themes
 import okadiaData from "./data/okaidia.theme"
-themeRegistry.register(new ThemeImpl('okaidia', '#272822', okadiaData));
+themeRegistry.register(new ThemeImpl('okaidia', '#f8f8f2', '#272822', okadiaData));
+
+import ideaData from "./data/idea.theme"
+themeRegistry.register(new ThemeImpl('idea', null, null, ideaData));
 //
 themeRegistry.freeze();
 
-ThemeContext.getInstance().currentTheme = defaultTheme;
+ThemeContext.getInstance().currentTheme = themeRegistry.getTheme('idea');
