@@ -15,6 +15,7 @@ const code = {
                 if (lang !== this._defaultLang){
                     this.setLang(lang); // overwrite fallback
                 }
+                return lang;
             },
             _getLang(propertyKey, defaultValue){
                 const value = localStorage.getItem(propertyKey);
