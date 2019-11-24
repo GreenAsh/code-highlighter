@@ -2,6 +2,10 @@ import IWidget = SDK.IWidget;
 import * as Sentry from '@sentry/browser';
 import {default as highlighter} from '../code-highlighter/prism';
 import {default as settings} from '../settings/settings'
+import ITextWidget = SDK.ITextWidget;
+import {ThemeContext} from "../code-highlighter/prism/themes/interfaces";
+import set = Reflect.set;
+import {themeRegistry} from "../code-highlighter/prism/themes";
 
 function getWidgetText(widget: any): string {
     if (widget.text){
@@ -61,16 +65,33 @@ async function hasPermission(permission: String) {
 
 async function bottomBarAction(){
     const widgets = await miro.board.selection.get();
-    await contextMenuHighlight(widgets);
-}
-
-async function contextMenuHighlight(widgets: IWidget[]){
-    console.log(widgets);
     if (widgets.length === 0){
         await showSettings();
     } else {
+        await reselectWidgets(widgets);
         await highlightWidgets(widgets);
     }
+    await contextMenuHighlight(widgets);
+}
+
+async function reselectWidgets(widgets: IWidget[]) {
+    let reselection = [];
+    for (let widget in widgets) {
+        reselection.push(widget.id);
+    }
+    if (reselection.length != 0) {
+        // await miro.board.selection.clear();
+        await miro.board.selection.selectWidgets(reselection)
+    }
+}
+
+async function contextMenuHighlight(widgets: IWidget[]) {
+    let fullData:IWidget[] = [];
+    for (let widget in widgets) {
+        const founded = await miro.board.widgets.get(widget);
+        founded.forEach(value => fullData.push(value));
+    }
+    await highlightWidgets(fullData);
 }
 
 async function showSettings(){
@@ -81,16 +102,19 @@ async function showSettings(){
 }
 
 async function highlightWidgets(widgets:Array<IWidget>) {
+    if (ThemeContext.getInstance().currentTheme.getName() != settings.getTheme()){
+        ThemeContext.getInstance().currentTheme = themeRegistry.getTheme(settings.getTheme());
+    }
     if (widgets.length == 0) {
         miro.showErrorNotification('Please select widgets for highlighting');
         return;
     }
     let count = 0;
-    for (let i = 0; i < widgets.length; i++) {
-        let widget = widgets[i];
+
+    for (let widget in widgets) {
         let widgetText = getWidgetText(widget);
         let plainText = getPlainText(widgetText);
-        if (!plainText) {
+        if (!plainText || plainText == '') {
             return;
         }
         let highlightedText = await highlighter.highlight(settings.getLang(), plainText);
