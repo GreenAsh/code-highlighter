@@ -6,6 +6,7 @@ export interface Theme {
 
 export interface ThemeRegistry {
     getTheme(theme: string): Theme
+    listThemes():string[]
 }
 
 export class ThemeContext {

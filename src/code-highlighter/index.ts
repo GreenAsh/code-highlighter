@@ -12,4 +12,3 @@ export interface CodeHighlighter {
      */
     highlight(lang: string, text: string): Promise<string>
 }
-
