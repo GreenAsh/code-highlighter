@@ -66,13 +66,13 @@ miro.onReady(async () => {
                         await contextMenuHighlight('java', widgets);
                     }
                 }, {
-                    tooltip: 'js',
+                    tooltip: 'javascript',
                     svgIcon: js_2,
                     onClick: async (widgets) => {
                         await contextMenuHighlight('js', widgets);
                     }
                 }, {
-                    tooltip: 'ts',
+                    tooltip: 'typescript',
                     svgIcon: ts_3,
                     onClick: async (widgets) => {
                         await contextMenuHighlight('ts', widgets);

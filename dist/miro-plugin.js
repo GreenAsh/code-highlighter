@@ -1993,13 +1993,13 @@ miro.onReady(() => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 
                             yield contextMenuHighlight('java', widgets);
                         })
                     }, {
-                        tooltip: 'js',
+                        tooltip: 'javascript',
                         svgIcon: js_2,
                         onClick: (widgets) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
                             yield contextMenuHighlight('js', widgets);
                         })
                     }, {
-                        tooltip: 'ts',
+                        tooltip: 'typescript',
                         svgIcon: ts_3,
                         onClick: (widgets) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
                             yield contextMenuHighlight('ts', widgets);
