@@ -8868,6 +8868,7 @@ __webpack_require__.r(__webpack_exports__);
     _langKey: 'ch_lang',
     _themeKey: 'ch_theme',
     _defaultLang: _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_LANGUAGE"],
+    _defaultTheme: 'idea',
     languages: _code_highlighter_config__WEBPACK_IMPORTED_MODULE_0__["LANGUAGES"],
     getLang() {
         const lang = this._getLang(this._langKey, this._getLang(this._langKey_fallback_1, this._defaultLang));
@@ -8897,7 +8898,7 @@ __webpack_require__.r(__webpack_exports__);
     getTheme() {
         let theme = localStorage.getItem(this._themeKey);
         if (theme == null) {
-            return _code_highlighter_prism_themes__WEBPACK_IMPORTED_MODULE_1__["themeRegistry"].getTheme('default').getName();
+            return _code_highlighter_prism_themes__WEBPACK_IMPORTED_MODULE_1__["themeRegistry"].getTheme(this._defaultTheme).getName();
         }
         return _code_highlighter_prism_themes__WEBPACK_IMPORTED_MODULE_1__["themeRegistry"].getTheme(theme).getName();
     },
