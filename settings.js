@@ -19,7 +19,7 @@ const code = {
             _getLang(propertyKey, defaultValue){
                 const value = localStorage.getItem(propertyKey);
                 if (this.languages[value] === 1){
-                    return lang;
+                    return value;
                 } else {
                     return defaultValue;
                 }

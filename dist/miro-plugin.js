@@ -1792,13 +1792,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', 'black', '#f5f2f0', _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
+const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', '#000000', '#f5f2f0', _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
 const themeRegistry = new _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__["DefaultThemeRegistry"](defaultTheme);
 // register themes
 
 themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('okaidia', '#f8f8f2', '#272822', _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
-themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('idea', 'black', 'transparent', _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__["default"]));
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('idea', '#000000', 'transparent', _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__["default"]));
 //
 themeRegistry.freeze();
 _interfaces__WEBPACK_IMPORTED_MODULE_2__["ThemeContext"].getInstance().currentTheme = themeRegistry.getTheme('idea');
@@ -1952,19 +1952,20 @@ const icon24 = `<g id="Layer_1">
     <path d="M14.411,22.42 C19.04,22.845 15.567,15.729 17.574,13.674 C17.714,13.53 21.082,13.171 20.632,12.501 C20.027,11.599 18.276,12.274 17.476,10.822 C15.704,7.607 19.094,3.463 14.563,2.561" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>`;
 const java_1 = `<g id="Layer_1">
-    <path d="M7.419,2.535 C2.777,2.293 6.525,9.297 4.601,11.438 C4.466,11.588 1.115,12.082 1.591,12.737 C2.23,13.618 3.954,12.871 4.81,14.297 C6.706,17.453 3.481,21.746 8.043,22.471" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M15.893,5.319 C16.714,9.312 17.849,14.093 16.404,18.068 C13.87,25.039 7.323,13.5 10.924,19.159" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M12.239,4.846 C14.48,5.059 17.049,4.867 19.181,4.616" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.419,2.535 C2.777,2.293 6.525,9.297 4.601,11.438 C4.466,11.588 1.115,12.082 1.591,12.737 C2.23,13.618 3.954,12.871 4.81,14.297 C6.706,17.453 3.481,21.746 8.043,22.471" fill-opacity="0" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.726,4.153 C17.692,8.795 19.027,14.352 17.327,18.971 C14.346,27.074 6.646,13.662 10.881,20.239" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.428,3.604 C15.064,3.852 18.086,3.629 20.594,3.337" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>`;
 const js_2 = `<g id="Layer_1">
-    <path d="M10.052,5.284 C10.159,6.843 10.151,8.523 10.224,10.133 C10.82,23.346 5.757,20.467 5.548,15.821" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M17.323,9.855 C16.206,8.721 14.565,9.496 14.341,11.191 C14.005,13.724 17.434,14.82 17.063,17.617 C16.647,20.747 13.439,20.12 12.951,17.516" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.419,2.535 C2.777,2.293 6.525,9.297 4.601,11.438 C4.466,11.588 1.115,12.082 1.591,12.737 C2.23,13.618 3.954,12.871 4.81,14.297 C6.706,17.453 3.481,21.746 8.043,22.471" fill-opacity="0" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.726,4.153 C17.692,8.795 19.027,14.352 17.327,18.971 C14.346,27.074 6.646,13.662 10.881,20.239" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.428,3.604 C15.064,3.852 18.086,3.629 20.594,3.337" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>`;
 const ts_3 = `<g id="Layer_1">
-    <path d="M16.069,9.002 C14.848,8.102 13.459,9.095 13.532,10.738 C13.641,13.193 16.994,13.695 17.115,16.407 C17.249,19.441 14.178,19.35 13.295,16.956" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M7.143,4.863 C5.029,10.259 7.405,25.547 11.653,15.221" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M3.854,9.561 C5.452,9.819 7.16,9.803 8.822,9.808" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M17.375,21.712 C22.004,22.136 18.531,15.02 20.537,12.966 C20.678,12.822 24.045,12.463 23.596,11.793 C22.991,10.891 21.24,11.566 20.439,10.113 C18.668,6.898 22.058,2.755 17.527,1.853" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.768,11.833 C16.226,10.225 14.316,10.241 13.33,11.792 C11.855,14.109 14.607,16.722 12.978,19.281 C11.156,22.144 8.399,20.088 9.125,17.33" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.054,2.182 C5.657,5.763 -1.968,21.279 8.548,14.558" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.964,3.772 C5.838,5.27 7.934,6.734 9.97,8.17" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.375,21.712 C22.004,22.136 18.531,15.02 20.537,12.966 C20.678,12.822 24.045,12.463 23.596,11.793 C22.991,10.891 21.24,11.566 20.439,10.113 C18.668,6.898 22.058,2.755 17.527,1.853" fill-opacity="0" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </g>`;
 const MAX_TEXT_SIZE = 5300;
 miro.onReady(() => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
