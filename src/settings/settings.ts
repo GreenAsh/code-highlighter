@@ -1,4 +1,4 @@
-import {DEFAULT_LANGUAGE, LANGUAGES} from "../code-highlighter/config";
+import {DEFAULT_LANGUAGE, DEFAULT_THEME, LANGUAGES} from "../code-highlighter/config";
 import {ThemeContext} from "../code-highlighter/prism/themes/interfaces";
 import {DefaultThemeRegistry} from "../code-highlighter/prism/themes/DefaultThemeRegistry";
 import {themeRegistry} from "../code-highlighter/prism/themes";
@@ -8,7 +8,7 @@ export default {
     _langKey: 'ch_lang',
     _themeKey: 'ch_theme',
     _defaultLang: DEFAULT_LANGUAGE,
-    _defaultTheme: 'idea',
+    _defaultTheme: DEFAULT_THEME,
     languages: LANGUAGES,
     getLang(): string {
         const lang = this._getLang(this._langKey, this._getLang(this._langKey_fallback_1, this._defaultLang));
