@@ -10,6 +10,11 @@ const code = {
                 'js': 1,
                 'ts': 1
             },
+            themes: {
+                'Default (PrismJS)': 'default',
+                'Light Transparent (idea)': 'idea',
+                '[night] Okaidia': 'okaidia'
+            },
             getLang: function() {
                 const lang = this._getLang(this._langKey, this._getLang(this._langKey_fallback_1, this._defaultLang));
                 if (lang !== this._defaultLang){
