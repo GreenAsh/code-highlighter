@@ -2,9 +2,7 @@ import IWidget = SDK.IWidget;
 import * as Sentry from '@sentry/browser';
 import {default as highlighter} from '../code-highlighter/prism';
 import {default as settings} from '../settings/settings'
-import ITextWidget = SDK.ITextWidget;
 import {ThemeContext} from "../code-highlighter/prism/themes/interfaces";
-import set = Reflect.set;
 import {themeRegistry} from "../code-highlighter/prism/themes";
 
 function getWidgetText(widget: any): string {
@@ -18,6 +16,24 @@ function getWidgetText(widget: any): string {
 const icon24 = `<g id="Layer_1">
     <path d="M9.514,2.535 C4.872,2.293 8.62,9.297 6.696,11.438 C6.561,11.588 3.21,12.082 3.686,12.737 C4.325,13.618 6.049,12.871 6.905,14.297 C8.801,17.453 5.576,21.746 10.138,22.471" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M14.411,22.42 C19.04,22.845 15.567,15.729 17.574,13.674 C17.714,13.53 21.082,13.171 20.632,12.501 C20.027,11.599 18.276,12.274 17.476,10.822 C15.704,7.607 19.094,3.463 14.563,2.561" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>`;
+
+const java_1 = `<g id="Layer_1">
+    <path d="M7.419,2.535 C2.777,2.293 6.525,9.297 4.601,11.438 C4.466,11.588 1.115,12.082 1.591,12.737 C2.23,13.618 3.954,12.871 4.81,14.297 C6.706,17.453 3.481,21.746 8.043,22.471" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.893,5.319 C16.714,9.312 17.849,14.093 16.404,18.068 C13.87,25.039 7.323,13.5 10.924,19.159" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.239,4.846 C14.48,5.059 17.049,4.867 19.181,4.616" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>`;
+
+const js_2 = `<g id="Layer_1">
+    <path d="M10.052,5.284 C10.159,6.843 10.151,8.523 10.224,10.133 C10.82,23.346 5.757,20.467 5.548,15.821" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.323,9.855 C16.206,8.721 14.565,9.496 14.341,11.191 C14.005,13.724 17.434,14.82 17.063,17.617 C16.647,20.747 13.439,20.12 12.951,17.516" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>`;
+
+const ts_3 = `<g id="Layer_1">
+    <path d="M16.069,9.002 C14.848,8.102 13.459,9.095 13.532,10.738 C13.641,13.193 16.994,13.695 17.115,16.407 C17.249,19.441 14.178,19.35 13.295,16.956" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.143,4.863 C5.029,10.259 7.405,25.547 11.653,15.221" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.854,9.561 C5.452,9.819 7.16,9.803 8.822,9.808" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.375,21.712 C22.004,22.136 18.531,15.02 20.537,12.966 C20.678,12.822 24.045,12.463 23.596,11.793 C22.991,10.891 21.24,11.566 20.439,10.113 C18.668,6.898 22.058,2.755 17.527,1.853" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
   </g>`;
 
 const MAX_TEXT_SIZE = 5300;
@@ -44,9 +60,23 @@ miro.onReady(async () => {
             },
             getWidgetMenuItems: async () => {
                 return  [{
-                    tooltip: 'Code Highlighter',
-                    svgIcon: icon24,
-                    onClick: contextMenuHighlight
+                    tooltip: 'Java',
+                    svgIcon: java_1,
+                    onClick: async (widgets) => {
+                        await contextMenuHighlight('java', widgets);
+                    }
+                }, {
+                    tooltip: 'js',
+                    svgIcon: js_2,
+                    onClick: async (widgets) => {
+                        await contextMenuHighlight('js', widgets);
+                    }
+                }, {
+                    tooltip: 'ts',
+                    svgIcon: ts_3,
+                    onClick: async (widgets) => {
+                        await contextMenuHighlight('ts', widgets);
+                    }
                 }];
             }
         }
@@ -69,7 +99,7 @@ async function bottomBarAction(){
         await showSettings();
     } else {
         await reselectWidgets(widgets);
-        await highlightWidgets(widgets);
+        await highlightWidgets(settings.getLang(), widgets);
     }
 }
 
@@ -85,15 +115,14 @@ async function reselectWidgets(widgets: IWidget[]) {
     }
 }
 
-async function contextMenuHighlight(widgets: IWidget[]) {
-    console.log(widgets);
+async function contextMenuHighlight(lang: string, widgets: IWidget[]) {
     let fullData:IWidget[] = [];
     for (let i = 0; i < widgets.length; i++) {
         let widget = widgets[i];
         const founded = await miro.board.widgets.get(widget);
         founded.forEach(value => fullData.push(value));
     }
-    await highlightWidgets(fullData);
+    await highlightWidgets(lang, fullData);
 }
 
 async function showSettings(){
@@ -103,7 +132,7 @@ async function showSettings(){
     });
 }
 
-async function highlightWidgets(widgets:Array<IWidget>) {
+async function highlightWidgets(lang: string, widgets:Array<IWidget>) {
     if (ThemeContext.getInstance().currentTheme.getName() != settings.getTheme()){
         ThemeContext.getInstance().currentTheme = themeRegistry.getTheme(settings.getTheme());
     }
@@ -120,7 +149,7 @@ async function highlightWidgets(widgets:Array<IWidget>) {
         if (!plainText || plainText == '') {
             return;
         }
-        let highlightedText = await highlighter.highlight(settings.getLang(), plainText);
+        let highlightedText = await highlighter.highlight(lang, plainText);
         if (highlightedText.length >= MAX_TEXT_SIZE) {
             miro.showErrorNotification('Highlight failed, due to possible loss of data');
             const message = `Highlighted length: ${highlightedText.length} Cleaned length: ${plainText.length}  Widget text length: ${widgetText.length}`;
