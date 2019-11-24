@@ -1825,13 +1825,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', 'black', '#f5f2f0', _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
+const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', '#000000', '#f5f2f0', _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
 const themeRegistry = new _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__["DefaultThemeRegistry"](defaultTheme);
 // register themes
 
 themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('okaidia', '#f8f8f2', '#272822', _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
-themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('idea', 'black', 'transparent', _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__["default"]));
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('idea', '#000000', 'transparent', _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__["default"]));
 //
 themeRegistry.freeze();
 _interfaces__WEBPACK_IMPORTED_MODULE_2__["ThemeContext"].getInstance().currentTheme = themeRegistry.getTheme('idea');
