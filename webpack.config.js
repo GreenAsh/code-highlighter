@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'none', // Tip! compile in 'production' mode before publish
+    mode: 'production', // Tip! compile in 'production' mode before publish
 
     // Tip! Just delete not using files, but main.ts is required
     entry: {
