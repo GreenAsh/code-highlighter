@@ -51,6 +51,7 @@ miro.onReady(async () => {
     }
 
     settings.setTheme(DEFAULT_THEME);
+    ThemeContext.getInstance().currentTheme = themeRegistry.getTheme(DEFAULT_THEME);
 
     await miro.initialize({
         extensionPoints: {
