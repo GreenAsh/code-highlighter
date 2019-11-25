@@ -159,7 +159,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CodeHighlighterImpl", function() { return CodeHighlighterImpl; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 
-// import InlineCss from "inline-css";
 class CodeHighlighterImpl {
     constructor() {
         this._languages = new Map();
@@ -182,9 +181,6 @@ class CodeHighlighterImpl {
             if (!language) {
                 throw new Error(`${lang} language not found`);
             }
-            // return await InlineCss(language.highlight(text), {
-            //     url: '../css/default.css'
-            // });
             return language.highlight(text);
         });
     }
@@ -1835,24 +1831,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "themeRegistry", function() { return themeRegistry; });
 /* harmony import */ var _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18);
 /* harmony import */ var _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
-/* harmony import */ var _interfaces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
-/* harmony import */ var _data_default_theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20);
-/* harmony import */ var _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21);
-/* harmony import */ var _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(22);
+/* harmony import */ var _data_default_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20);
+/* harmony import */ var _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(21);
+/* harmony import */ var _data_idea_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(22);
+/* harmony import */ var _data_tomorrow_night_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(23);
+/* harmony import */ var _data_vs_theme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(24);
+/* harmony import */ var _data_material_light_theme__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(25);
+
+
+// themes
 
 
 
 
-const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', '#000000', '#f5f2f0', _data_default_theme__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+
+const defaultTheme = new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('default', '#000000', '#f5f2f0', _data_default_theme__WEBPACK_IMPORTED_MODULE_2__["default"]);
 const themeRegistry = new _DefaultThemeRegistry__WEBPACK_IMPORTED_MODULE_0__["DefaultThemeRegistry"](defaultTheme);
 // register themes
-
-themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('okaidia', '#f8f8f2', '#272822', _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_4__["default"]));
-
-themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('idea', '#000000', 'transparent', _data_idea_theme__WEBPACK_IMPORTED_MODULE_5__["default"]));
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('okaidia', '#f8f8f2', '#272822', _data_okaidia_theme__WEBPACK_IMPORTED_MODULE_3__["default"]));
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('idea', '#000000', 'transparent', _data_idea_theme__WEBPACK_IMPORTED_MODULE_4__["default"]));
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('tomorrow-night', '#ccc', '#2d2d2d', _data_tomorrow_night_theme__WEBPACK_IMPORTED_MODULE_5__["default"]));
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('vs', '#393A34', '#fff', _data_vs_theme__WEBPACK_IMPORTED_MODULE_6__["default"]));
+themeRegistry.register(new _ThemeImpl__WEBPACK_IMPORTED_MODULE_1__["ThemeImpl"]('material-light', '#90a4ae', '#fafafa', _data_material_light_theme__WEBPACK_IMPORTED_MODULE_7__["default"]));
 //
 themeRegistry.freeze();
-_interfaces__WEBPACK_IMPORTED_MODULE_2__["ThemeContext"].getInstance().currentTheme = themeRegistry.getTheme('idea');
 
 
 /***/ }),
@@ -1971,6 +1974,30 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("{\"comment\":{\"color\":\"#808080\"},\"prolog\":{\"color\":\"#808080\"},\"doctype\":{\"color\":\"#808080\"},\"cdata\":{\"color\":\"#808080\"},\"punctuation\":{\"color\":\"#800080\"},\"interpolation\":{\"color\":\"#800080\"},\"interpolation_punctuation\":{\"color\":\"#800080\"},\"namespace\":{\"color\":\"#004A43\"},\"property\":{\"color\":\"#000080\"},\"boolean\":{\"color\":\"#000080\"},\"tag\":{\"color\":\"#000080\"},\"symbol\":{\"color\":\"#000080\"},\"deleted\":{\"color\":\"#000080\"},\"number\":{\"color\":\"#0000FF\"},\"selector\":{\"color\":\"#008000\"},\"attr_name\":{\"color\":\"#008000\"},\"string\":{\"color\":\"#008000\"},\"template_punctuation\":{\"color\":\"#008000\"},\"char\":{\"color\":\"#008000\"},\"inserted\":{\"color\":\"#008000\"},\"atrule\":{\"color\":\"#000080\"},\"attr_value\":{\"color\":\"#000080\"},\"keyword\":{\"color\":\"#000080\"},\"function\":{\"color\":\"#000080\"},\"regex\":{\"color\":\"#660E7A\"},\"important\":{\"color\":\"#660E7A\"},\"variable__parameter\":{\"color\":\"#660E7A\"},\"constant\":{\"color\":\"#660E7A\"},\"builtin\":{\"color\":\"#660E7A\"},\"function_variable\":{\"color\":\"#660E7A\"},\"class_name\":{\"color\":\"#660E7A\"},\"annotation\":{\"color\":\"#808000\"},\"template_string\":{\"color\":\"#20999D\"},\"source\":{\"color\":\"#20999D\"},\"generics\":{\"color\":\"#20999D\"}}");
+
+/***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("{\n  \"comment\": {\n    \"color\": \"#999\"\n  },\n  \"block_comment\": {\n    \"color\": \"#999\"\n  },\n  \"prolog\": {\n    \"color\": \"#999\"\n  },\n  \"doctype\": {\n    \"color\": \"#999\"\n  },\n  \"cdata\": {\n    \"color\": \"#999\"\n  },\n  \"punctuation\": {\n    \"color\": \"#ccc\"\n  },\n  \"tag\": {\n    \"color\": \"#e2777a\"\n  },\n  \"attr_name\": {\n    \"color\": \"#e2777a\"\n  },\n  \"namespace\": {\n    \"color\": \"#e2777a\"\n  },\n  \"deleted\": {\n    \"color\": \"#e2777a\"\n  },\n  \"function_name\": {\n    \"color\": \"#6196cc\"\n  },\n  \"boolean\": {\n    \"color\": \"#f08d49\"\n  },\n  \"number\": {\n    \"color\": \"#f08d49\"\n  },\n  \"function\": {\n    \"color\": \"#f08d49\"\n  },\n  \"property\": {\n    \"color\": \"#f8c555\"\n  },\n  \"class_name\": {\n    \"color\": \"#f8c555\"\n  },\n  \"constant\": {\n    \"color\": \"#f8c555\"\n  },\n  \"symbol\": {\n    \"color\": \"#f8c555\"\n  },\n  \"selector\": {\n    \"color\": \"#cc99cd\"\n  },\n  \"important\": {\n    \"fontWeight\": \"bold\"\n  },\n  \"atrule\": {\n    \"color\": \"#cc99cd\"\n  },\n  \"keyword\": {\n    \"color\": \"#cc99cd\"\n  },\n  \"builtin\": {\n    \"color\": \"#cc99cd\"\n  },\n  \"string\": {\n    \"color\": \"#7ec699\"\n  },\n  \"char\": {\n    \"color\": \"#7ec699\"\n  },\n  \"attr_value\": {\n    \"color\": \"#7ec699\"\n  },\n  \"regex\": {\n    \"color\": \"#7ec699\"\n  },\n  \"variable\": {\n    \"color\": \"#7ec699\"\n  },\n  \"operator\": {\n    \"color\": \"#67cdcc\"\n  },\n  \"entity\": {\n    \"cursor\": \"help\"\n  },\n  \"url\": {\n    \"color\": \"#67cdcc\"\n  },\n  \"bold\": {\n    \"fontWeight\": \"bold\"\n  },\n  \"italic\": {\n    \"fontStyle\": \"italic\"\n  },\n  \"inserted\": {\n    \"color\": \"green\"\n  }\n}");
+
+/***/ }),
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("{\n  \"comment\": {\n    \"color\": \"#008000\",\n    \"fontStyle\": \"italic\"\n  },\n  \"prolog\": {\n    \"color\": \"#008000\",\n    \"fontStyle\": \"italic\"\n  },\n  \"doctype\": {\n    \"color\": \"#008000\",\n    \"fontStyle\": \"italic\"\n  },\n  \"cdata\": {\n    \"color\": \"#008000\",\n    \"fontStyle\": \"italic\"\n  },\n  \"namespace\": {\n    \"opacity\": \".7\"\n  },\n  \"string\": {\n    \"color\": \"#A31515\"\n  },\n  \"punctuation\": {\n    \"color\": \"#393A34\"\n  },\n  \"operator\": {\n    \"color\": \"#393A34\"\n  },\n  \"url\": {\n    \"color\": \"#36acaa\"\n  },\n  \"symbol\": {\n    \"color\": \"#36acaa\"\n  },\n  \"number\": {\n    \"color\": \"#36acaa\"\n  },\n  \"boolean\": {\n    \"color\": \"#36acaa\"\n  },\n  \"variable\": {\n    \"color\": \"#36acaa\"\n  },\n  \"constant\": {\n    \"color\": \"#36acaa\"\n  },\n  \"inserted\": {\n    \"color\": \"#36acaa\"\n  },\n  \"atrule\": {\n    \"color\": \"#0000ff\"\n  },\n  \"keyword\": {\n    \"color\": \"#0000ff\"\n  },\n  \"attr_value\": {\n    \"color\": \"#0000ff\"\n  },\n  \"autohotkey_selector\": {\n    \"color\": \"#0000ff\"\n  },\n  \"json_boolean\": {\n    \"color\": \"#0000ff\"\n  },\n  \"json_number\": {\n    \"color\": \"#0000ff\"\n  },\n  \"css_code_class\": {\n    \"color\": \"#0000ff\"\n  },\n  \"function\": {\n    \"color\": \"#393A34\"\n  },\n  \"deleted\": {\n    \"color\": \"#9a050f\"\n  },\n  \"autohotkey_tag\": {\n    \"color\": \"#9a050f\"\n  },\n  \"selector\": {\n    \"color\": \"#800000\"\n  },\n  \"autohotkey_keyword\": {\n    \"color\": \"#00009f\"\n  },\n  \"important\": {\n    \"fontWeight\": \"bold\"\n  },\n  \"bold\": {\n    \"fontWeight\": \"bold\"\n  },\n  \"italic\": {\n    \"fontStyle\": \"italic\"\n  },\n  \"class_name\": {\n    \"color\": \"#2B91AF\"\n  },\n  \"json_property\": {\n    \"color\": \"#2B91AF\"\n  },\n  \"tag\": {\n    \"color\": \"#800000\"\n  },\n  \"attr_name\": {\n    \"color\": \"#ff0000\"\n  },\n  \"property\": {\n    \"color\": \"#ff0000\"\n  },\n  \"regex\": {\n    \"color\": \"#ff0000\"\n  },\n  \"entity\": {\n    \"color\": \"#ff0000\"\n  }\n}");
+
+/***/ }),
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("{\n  \"css\": {\n    \"color\": \"#f76d47\"\n  },\n  \"sass\": {\n    \"color\": \"#f76d47\"\n  },\n  \"scss\": {\n    \"color\": \"#f76d47\"\n  },\n  \"namespace\": {\n    \"opacity\": \"0.7\"\n  },\n  \"atrule\": {\n    \"color\": \"#7c4dff\"\n  },\n  \"attr_name\": {\n    \"color\": \"#39adb5\"\n  },\n  \"attr_value\": {\n    \"color\": \"#f6a434\"\n  },\n  \"attribute\": {\n    \"color\": \"#f6a434\"\n  },\n  \"boolean\": {\n    \"color\": \"#7c4dff\"\n  },\n  \"builtin\": {\n    \"color\": \"#39adb5\"\n  },\n  \"cdata\": {\n    \"color\": \"#39adb5\"\n  },\n  \"char\": {\n    \"color\": \"#39adb5\"\n  },\n  \"class\": {\n    \"color\": \"#39adb5\"\n  },\n  \"class_name\": {\n    \"color\": \"#6182b8\"\n  },\n  \"comment\": {\n    \"color\": \"#aabfc9\"\n  },\n  \"constant\": {\n    \"color\": \"#7c4dff\"\n  },\n  \"deleted\": {\n    \"color\": \"#e53935\"\n  },\n  \"doctype\": {\n    \"color\": \"#aabfc9\"\n  },\n  \"entity\": {\n    \"color\": \"#e53935\"\n  },\n  \"function\": {\n    \"color\": \"#7c4dff\"\n  },\n  \"hexcode\": {\n    \"color\": \"#f76d47\"\n  },\n  \"id\": {\n    \"color\": \"#7c4dff\",\n    \"fontWeight\": \"bold\"\n  },\n  \"important\": {\n    \"color\": \"#7c4dff\",\n    \"fontWeight\": \"bold\"\n  },\n  \"inserted\": {\n    \"color\": \"#39adb5\"\n  },\n  \"keyword\": {\n    \"color\": \"#7c4dff\"\n  },\n  \"number\": {\n    \"color\": \"#f76d47\"\n  },\n  \"operator\": {\n    \"color\": \"#39adb5\"\n  },\n  \"prolog\": {\n    \"color\": \"#aabfc9\"\n  },\n  \"property\": {\n    \"color\": \"#39adb5\"\n  },\n  \"pseudo_class\": {\n    \"color\": \"#f6a434\"\n  },\n  \"pseudo_element\": {\n    \"color\": \"#f6a434\"\n  },\n  \"punctuation\": {\n    \"color\": \"#39adb5\"\n  },\n  \"regex\": {\n    \"color\": \"#6182b8\"\n  },\n  \"selector\": {\n    \"color\": \"#e53935\"\n  },\n  \"string\": {\n    \"color\": \"#f6a434\"\n  },\n  \"symbol\": {\n    \"color\": \"#7c4dff\"\n  },\n  \"tag\": {\n    \"color\": \"#e53935\"\n  },\n  \"unit\": {\n    \"color\": \"#f76d47\"\n  },\n  \"url\": {\n    \"color\": \"#e53935\"\n  },\n  \"variable\": {\n    \"color\": \"#e53935\"\n  }\n}");
 
 /***/ })
 /******/ ]);
