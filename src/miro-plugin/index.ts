@@ -62,8 +62,11 @@ miro.onReady(async () => {
                     onClick: bottomBarAction
                 };
             },
-            getWidgetMenuItems: async () => {
-                return  [{
+            getWidgetMenuItems: async (widgets) => {
+                if (!hasAllowedWidgets(widgets)) {
+                    return [];
+                }
+                return [{
                     tooltip: 'Java',
                     svgIcon: java_1,
                     onClick: async (widgets) => {
@@ -87,9 +90,19 @@ miro.onReady(async () => {
     })
 });
 
+function hasAllowedWidgets(widgets: IWidget[]): boolean {
+    for (let i = 0; i < widgets.length; i++) {
+        const widget: any = widgets[i];
+        if (widget.text && widget.text.length > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
 async function hasPermission(permission: String) {
     let permissions = await miro.currentUser.getCurrentBoardPermissions();
-    for (let i = 0; i < permissions.length; i++){
+    for (let i = 0; i < permissions.length; i++) {
         if (permissions[i] === permission) {
             return true;
         }
