@@ -1,5 +1,4 @@
-import { Theme } from "./interfaces";
-import {tryReadFile} from "tslint/lib/files/reading";
+import {Theme} from "./interfaces";
 
 export class ThemeImpl implements Theme {
     private readonly _name: string;
