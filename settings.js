@@ -12,8 +12,11 @@ const code = {
             },
             themes: {
                 'Default (PrismJS)': 'default',
+                'Meterial Light': 'material-light',
                 'Light Transparent (idea)': 'idea',
-                '[night] Okaidia': 'okaidia'
+                'VS Theme': 'vs',
+                'Okaidia': 'okaidia',
+                'Tomorrow Night': 'tomorrow-night'
             },
             getLang: function() {
                 const lang = this._getLang(this._langKey, this._getLang(this._langKey_fallback_1, this._defaultLang));

@@ -4,7 +4,6 @@ import {default as highlighter} from '../code-highlighter/prism';
 import {default as settings} from '../settings/settings'
 import {ThemeContext} from "../code-highlighter/prism/themes/interfaces";
 import {themeRegistry} from "../code-highlighter/prism/themes";
-import set = Reflect.set;
 import {DEFAULT_THEME} from "../code-highlighter/config";
 
 function getWidgetText(widget: any): string {

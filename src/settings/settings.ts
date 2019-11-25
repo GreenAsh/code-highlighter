@@ -1,6 +1,4 @@
 import {DEFAULT_LANGUAGE, DEFAULT_THEME, LANGUAGES} from "../code-highlighter/config";
-import {ThemeContext} from "../code-highlighter/prism/themes/interfaces";
-import {DefaultThemeRegistry} from "../code-highlighter/prism/themes/DefaultThemeRegistry";
 import {themeRegistry} from "../code-highlighter/prism/themes";
 
 export default {
