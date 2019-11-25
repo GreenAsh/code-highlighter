@@ -1,5 +1,4 @@
 import {CodeHighlighter, LanguageHighlighter} from "../index";
-// import InlineCss from "inline-css";
 
 export class CodeHighlighterImpl implements CodeHighlighter {
     private static _instance: CodeHighlighterImpl;
@@ -26,10 +25,6 @@ export class CodeHighlighterImpl implements CodeHighlighter {
         if (!language) {
             throw new Error(`${lang} language not found`);
         }
-
-        // return await InlineCss(language.highlight(text), {
-        //     url: '../css/default.css'
-        // });
         return language.highlight(text);
     }
 }
