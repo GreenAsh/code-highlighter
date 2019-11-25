@@ -92,8 +92,9 @@ miro.onReady(async () => {
 
 function hasAllowedWidgets(widgets: IWidget[]): boolean {
     for (let i = 0; i < widgets.length; i++) {
-        const widget: any = widgets[i];
-        if (widget.text && widget.text.length > 0) {
+        const widget = widgets[i];
+        const widgetText = getWidgetText(widget);
+        if (widgetText != '' && widgetText.length > 0) {
             return true;
         }
     }
