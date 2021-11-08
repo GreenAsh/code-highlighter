@@ -49,6 +49,10 @@ miro.onReady(async () => {
     if (!canEditWidgets) {
         return;
     }
+    // set up default theme
+    if (!settings.hasTheme()) {
+        settings.setTheme(DEFAULT_THEME)
+    }
 
     await miro.initialize({
         extensionPoints: {

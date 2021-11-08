@@ -20,6 +20,10 @@ export class DefaultThemeRegistry implements ThemeRegistry, ThemeRegistrar {
         return result;
     }
 
+    hasTheme(theme: string): boolean {
+        return this._theme2Object.has(theme)
+    }
+
     listThemes(): string[] {
         return Array.from(this._theme2Object.keys());
     }

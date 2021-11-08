@@ -7,6 +7,7 @@ export interface Theme {
 
 export interface ThemeRegistry {
     getTheme(theme: string): Theme
+    hasTheme(theme: string): boolean
     listThemes():string[]
 }
 
