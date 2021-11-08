@@ -1,13 +1,14 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
+
+version = '0.5.8'
 
 module.exports = {
-    mode: 'production', // Tip! compile in 'production' mode before publish
-
-    // Tip! Just delete not using files, but main.ts is required
+    mode: 'production',
     entry: {
-        index: './src/app.ts',
-        'miro-plugin': './src/miro-plugin/index.ts'
-        //'bottom-panel': './src/bottom-panel.tsx'
+        'syntax-highlighter-miro-plugin': './src/miro-plugin/index.ts',
+        'syntax-highlighter-settings': './src/settings/index.ts'
     },
     module: {
         rules: [
@@ -41,7 +42,34 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js','.css']
     },
     output: {
-        filename: '[name].js',
+        filename: `[name].js`,
         path: path.resolve(__dirname, 'dist')
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./src/pages/settings.html",
+            filename: "./settings.html",
+            templateParameters: {
+                'version': version
+            },
+            chunks: ["syntax-highlighter-settings"],
+            inject: false
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/pages/index.html",
+            filename: "./index.html",
+            templateParameters: {
+                'version': version
+            },
+            chunks:["syntax-highlighter-miro-plugin"],
+            inject: false
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: "./src/pages/feedback.html", to: "./feedback.html" },
+                { from: "./src/pages/install.html", to: "./install.html" },
+                { from: "./docs", to: "./docs" }
+            ]
+        })
+    ]
 };
