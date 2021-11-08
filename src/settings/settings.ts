@@ -33,6 +33,17 @@ export default {
             }
         }
     },
+    hasTheme(): boolean {
+        const theme = localStorage.getItem(this._themeKey);
+        switch (theme) {
+            case null:
+            case undefined:
+            case '':
+                return false;
+            default:
+                return themeRegistry.hasTheme(theme);
+        }
+    },
     getTheme(): string {
         let theme = localStorage.getItem(this._themeKey);
         if (theme == null) {
