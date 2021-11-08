@@ -1,6 +1,3 @@
-import 'prismjs/components/prism-java';
-import 'prismjs/components/prism-typescript';
-
 export const LANGUAGES = ['java', 'js', 'ts'];
 export const DEFAULT_LANGUAGE = 'ts';
 export const DEFAULT_THEME = 'okaidia';

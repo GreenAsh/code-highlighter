@@ -1,4 +1,3 @@
-import 'prismjs/components/prism-clike';
 import {DOM} from "../../config";
 
 export class CLikeTokenFactory implements TokenFactory {

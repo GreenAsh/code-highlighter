@@ -1,4 +1,3 @@
-import 'prismjs/components/prism-java';
 import {DOM} from "../../config";
 import {CLikeTokenFactory} from "./clike";
 

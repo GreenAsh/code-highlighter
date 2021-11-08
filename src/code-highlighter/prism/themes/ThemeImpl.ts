@@ -2,19 +2,25 @@ import {Theme} from "./interfaces";
 
 export class ThemeImpl implements Theme {
     private readonly _name: string;
+    private readonly _displayName: string;
     private readonly _textColor: string | null;
     private readonly _backgroundColor: string | null;
     private readonly _themeData: any;
 
-    constructor(name: string, textColor: string | null, backgroundColor: string | null, themeData: string) {
+    constructor(name: string, displayName: string, textColor: string | null, backgroundColor: string | null, themeData: string) {
         this._name = name;
+        this._displayName = displayName;
         this._textColor = textColor;
         this._backgroundColor = backgroundColor;
         this._themeData = JSON.parse(themeData);
     }
 
     getName(): string {
-        return this._name
+        return this._name;
+    }
+
+    getDisplayName(): string {
+        return this._displayName;
     }
 
     getTextColor(): string | null {

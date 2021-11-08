@@ -1,5 +1,6 @@
 export interface Theme {
     getName(): string;
+    getDisplayName(): string;
     getBackgroundColor(): string | null;
     getTextColor(): string | null;
     applyStyle(lang:string, classNames:string, element: HTMLElement):void
@@ -8,7 +9,7 @@ export interface Theme {
 export interface ThemeRegistry {
     getTheme(theme: string): Theme
     hasTheme(theme: string): boolean
-    listThemes():string[]
+    listThemes(): Theme
 }
 
 export class ThemeContext {
