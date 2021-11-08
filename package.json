@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@sentry/browser": "^5.9.1",
     "prismjs": "^1.17.1",
@@ -18,16 +18,16 @@
     "react-dom": "^16.9.12"
   },
   "devDependencies": {
-    "@sentry/typescript": "^5.7.1",
+    "@sentry/typescript": "^5.20.1",
     "@types/prismjs": "^1.16.0",
     "@types/react": "^16.9.12",
     "@types/react-dom": "^16.9.4",
-    "raw-loader": "^3.1.0",
+    "raw-loader": "^4.0.2",
     "svg-inline-loader": "^0.8.0",
     "ts-loader": "^6.2.1",
     "tslint": "^5.20.1",
     "typescript": "^3.7.2",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1"
   }
 }
