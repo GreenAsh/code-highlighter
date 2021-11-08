@@ -47,6 +47,7 @@ const code = {
                 return localStorage.getItem(this._themeKey);
             },
             setTheme(theme) {
+                console.log(`Set theme: ${theme}`);
                 localStorage.setItem(this._themeKey, theme);
             }
         }

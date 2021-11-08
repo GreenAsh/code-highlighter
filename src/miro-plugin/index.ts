@@ -50,9 +50,6 @@ miro.onReady(async () => {
         return;
     }
 
-    settings.setTheme(DEFAULT_THEME);
-    ThemeContext.getInstance().currentTheme = themeRegistry.getTheme(DEFAULT_THEME);
-
     await miro.initialize({
         extensionPoints: {
             bottomBar: async () => {
@@ -69,20 +66,20 @@ miro.onReady(async () => {
                 return [{
                     tooltip: 'Java',
                     svgIcon: java_1,
-                    onClick: async (widgets) => {
-                        await contextMenuHighlight('java', widgets);
+                    onClick: async () => {
+                        await contextMenuHighlight('java');
                     }
                 }, {
                     tooltip: 'javascript',
                     svgIcon: js_2,
-                    onClick: async (widgets) => {
-                        await contextMenuHighlight('js', widgets);
+                    onClick: async () => {
+                        await contextMenuHighlight('js');
                     }
                 }, {
                     tooltip: 'typescript',
                     svgIcon: ts_3,
-                    onClick: async (widgets) => {
-                        await contextMenuHighlight('ts', widgets);
+                    onClick: async () => {
+                        await contextMenuHighlight('ts');
                     }
                 }];
             }
@@ -90,11 +87,12 @@ miro.onReady(async () => {
     })
 });
 
+const SUPPORTED_WIDGET_TYPES = new Set<string>(['SHAPE', 'TEXT']);
+
 function hasAllowedWidgets(widgets: IWidget[]): boolean {
     for (let i = 0; i < widgets.length; i++) {
         const widget = widgets[i];
-        const widgetText = getWidgetText(widget);
-        if (widgetText != '' && widgetText.length > 0) {
+        if (SUPPORTED_WIDGET_TYPES.has(widget.type)) {
             return true;
         }
     }
@@ -133,14 +131,10 @@ async function reselectWidgets(widgets: IWidget[]) {
     }
 }
 
-async function contextMenuHighlight(lang: string, widgets: IWidget[]) {
-    let fullData:IWidget[] = [];
-    for (let i = 0; i < widgets.length; i++) {
-        let widget = widgets[i];
-        const founded = await miro.board.widgets.get(widget);
-        founded.forEach(value => fullData.push(value));
-    }
-    await highlightWidgets(lang, fullData);
+async function contextMenuHighlight(lang: string) {
+    const widgets = await miro.board.selection.get();
+    await reselectWidgets(widgets);
+    await highlightWidgets(lang, widgets);
 }
 
 async function showSettings(){
@@ -151,13 +145,18 @@ async function showSettings(){
 }
 
 async function highlightWidgets(lang: string, widgets:Array<IWidget>) {
-    if (ThemeContext.getInstance().currentTheme.getName() != settings.getTheme()){
-        ThemeContext.getInstance().currentTheme = themeRegistry.getTheme(settings.getTheme());
-    }
-    if (widgets.length == 0) {
+    if (!widgets || widgets.length === 0) {
         miro.showErrorNotification('Please select widgets for highlighting');
         return;
     }
+
+    { // set up theme context
+        const theme = themeRegistry.getTheme(settings.getTheme())
+        if (!ThemeContext.getInstance().hasTheme() || ThemeContext.getInstance().currentTheme.getName() !== theme.getName()) {
+            ThemeContext.getInstance().currentTheme = theme;
+        }
+    }
+
     let count = 0;
 
     for (let i = 0; i < widgets.length; i++) {

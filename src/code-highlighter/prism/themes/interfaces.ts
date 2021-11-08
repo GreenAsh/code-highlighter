@@ -11,8 +11,12 @@ export interface ThemeRegistry {
 }
 
 export class ThemeContext {
-    private static _instance: ThemeContext;
-    public static getInstance(){
+    private static _instance: ThemeContext
+
+    /**
+     * Returns a singleton instance of object
+     */
+    public static getInstance(): ThemeContext {
         if (!ThemeContext._instance){
             ThemeContext._instance = new ThemeContext();
         }
@@ -21,19 +25,25 @@ export class ThemeContext {
 
     private _currentTheme: Theme | null;
 
-    constructor() {
+    private constructor() {
         this._currentTheme = null;
     }
 
-    get currentTheme(): Theme {
-        if (this._currentTheme != null) {
-            return this._currentTheme;
-        } else {
-            throw new Error(`There is no colorizer in context`);
-        }
+    /**
+     * Return true if theme is being set
+     */
+    public hasTheme(): boolean {
+        return this._currentTheme !== null
     }
 
-    set currentTheme(value: Theme) {
+    public get currentTheme(): Theme {
+        if (this._currentTheme !== null) {
+            return this._currentTheme;
+        }
+        throw new Error(`There is no theme in context`);
+    }
+
+    public set currentTheme(value: Theme) {
         this._currentTheme = value;
     }
 }
