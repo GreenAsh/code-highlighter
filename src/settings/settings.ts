@@ -41,6 +41,7 @@ export default {
         return themeRegistry.getTheme(theme).getName();
     },
     setTheme(theme:string) {
+        console.log(`Set theme: ${theme}`)
         localStorage.setItem(this._themeKey, themeRegistry.getTheme(theme).getName());
     }
 };
