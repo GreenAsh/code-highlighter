@@ -50,8 +50,8 @@ miro.onReady(async () => {
         return;
     }
 
-    settings.setTheme(DEFAULT_THEME);
-    ThemeContext.getInstance().currentTheme = themeRegistry.getTheme(DEFAULT_THEME);
+    // settings.setTheme(DEFAULT_THEME);
+    // ThemeContext.getInstance().currentTheme = themeRegistry.getTheme(DEFAULT_THEME);
 
     await miro.initialize({
         extensionPoints: {
@@ -90,11 +90,12 @@ miro.onReady(async () => {
     })
 });
 
+const SUPPORTED_WIDGET_TYPES = new Set<string>(['SHAPE', 'TEXT']);
+
 function hasAllowedWidgets(widgets: IWidget[]): boolean {
     for (let i = 0; i < widgets.length; i++) {
         const widget = widgets[i];
-        const widgetText = getWidgetText(widget);
-        if (widgetText != '' && widgetText.length > 0) {
+        if (SUPPORTED_WIDGET_TYPES.has(widget.type)) {
             return true;
         }
     }
