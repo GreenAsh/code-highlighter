@@ -24,8 +24,8 @@ export class DefaultThemeRegistry implements ThemeRegistry, ThemeRegistrar {
         return this._theme2Object.has(theme)
     }
 
-    listThemes(): string[] {
-        return Array.from(this._theme2Object.keys());
+    listThemes(): Theme[] {
+        return Array.from(this._theme2Object.values());
     }
 
     freeze(): void {

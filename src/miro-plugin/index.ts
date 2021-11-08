@@ -1,7 +1,7 @@
 import IWidget = SDK.IWidget;
 import * as Sentry from '@sentry/browser';
 import {default as highlighter} from '../code-highlighter/prism';
-import {default as settings} from '../settings/settings'
+import {settings} from '../settings/shared-settings'
 import {ThemeContext} from "../code-highlighter/prism/themes/interfaces";
 import {themeRegistry} from "../code-highlighter/prism/themes";
 import {DEFAULT_THEME} from "../code-highlighter/config";
