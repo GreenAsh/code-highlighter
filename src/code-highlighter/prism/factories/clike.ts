@@ -4,7 +4,6 @@ export class CLikeTokenFactory implements TokenFactory {
     create(name: String, className: string): Node | false | null {
         switch (name) {
             case 'keyword':
-                return DOM.createElement('b', className);
             case 'string':
             case 'boolean':
             case 'number':
