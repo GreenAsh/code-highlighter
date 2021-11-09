@@ -77,6 +77,6 @@ module.exports = {
                 { from: "./src/pages/install.html", to: "./install.html" },
                 { from: "./docs", to: "./docs" }
             ]
-        })
+        }),
     ]
 };
