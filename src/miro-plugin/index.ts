@@ -58,7 +58,7 @@ miro.onReady(async () => {
         extensionPoints: {
             bottomBar: async () => {
                 return {
-                    title: 'Code Highlighter',
+                    title: 'Code Syntax Highlighter',
                     svgIcon: icon24,
                     onClick: bottomBarAction
                 };
