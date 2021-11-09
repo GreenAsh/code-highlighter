@@ -3,7 +3,7 @@
 <head>
     <title>miro-code-highlighter-plugin feedback</title>
     <script type="text/javascript" src="https://miro.com/app/static/sdk.1.1.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://miro.com/app/static/styles.1.0.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/mirotone/dist/styles.css"/>
     <!-- for error logging -->
     <script
             src="https://browser.sentry-cdn.com/6.14.0/bundle.min.js"
@@ -19,13 +19,16 @@
     </script>
 </head>
 <body>
-<div style="padding: 20px 10px">
-    <a href="javascript:closeModal()" style="position: absolute; right: 20px; top: 10px;">close</a>
-    <section style="padding: 10px; line-height: 58px; text-align: center;">
-        <textarea id="feedback_area" placeholder="Please write your feedback here" class="miro-input miro-input--primary" style="width: 400px; height: 200px; margin-bottom: 10px;" maxlength="1000" aria-label="feedback"></textarea>
-        <br />
-        <button class="miro-btn miro-btn--primary miro-btn--small" onclick="sendFeedback()">Send Feedback</button>
-    </section>
+<div class="grid">
+    <div class="cs8 ce9 grid" style="text-align: left">
+        <button class="button-icon button-icon-small icon-close" type="button" onclick="miro.board.ui.closeModal();"></button>
+    </div>
+    <div class="cs2 ce7 form-group">
+        <textarea id="feedback_area" class="textarea"  placeholder="Please write your feedback here" rows="4" maxlength="1000"></textarea>
+    </div>
+    <div class="cs4 ce5">
+        <button class="button button-primary" onclick="sendFeedback()">Send Feedback</button>
+    </div>
 </div>
 </body>
 </html>
