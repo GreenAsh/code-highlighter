@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
-version = '0.5.9'
+version = '0.5.10'
 
 module.exports = {
     mode: 'production',
@@ -64,9 +64,16 @@ module.exports = {
             chunks:["syntax-highlighter-miro-plugin"],
             inject: false
         }),
+        new HtmlWebpackPlugin({
+            template: "./src/pages/feedback.html",
+            filename: "./feedback.html",
+            templateParameters: {
+                'version': version
+            },
+            inject: false
+        }),
         new CopyPlugin({
             patterns: [
-                { from: "./src/pages/feedback.html", to: "./feedback.html" },
                 { from: "./src/pages/install.html", to: "./install.html" },
                 { from: "./docs", to: "./docs" }
             ]
