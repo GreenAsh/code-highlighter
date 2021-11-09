@@ -1,6 +1,6 @@
-<!doctype html><html lang="en"><head><title>miro-code-highlighter-plugin feedback</title><script src="https://miro.com/app/static/sdk.1.1.js"></script><link rel="stylesheet" href="https://miro.com/app/static/styles.1.0.css"/><script src="https://browser.sentry-cdn.com/5.9.1/bundle.min.js" integrity="sha384-/x1aHz0nKRd6zVUazsV6CbQvjJvr6zQL2CHbQZf3yoLkezyEtZUpqUNnOLW9Nt3v" crossorigin="anonymous"></script><script>Sentry.init({
+<!doctype html><html lang="en"><head><title>miro-code-highlighter-plugin feedback</title><script src="https://miro.com/app/static/sdk.1.1.js"></script><link rel="stylesheet" href="https://miro.com/app/static/styles.1.0.css"/><script src="https://browser.sentry-cdn.com/6.14.0/bundle.min.js" integrity="sha384-1FVbcJ5cSGdCrMNyUndHGSl0WlS+Cq5zaYdfnVF7NqkkQpU+7plvm0NomKbzcD//" crossorigin="anonymous"></script><script>Sentry.init({
             dsn: 'https://af5a66fee3174f318ab6c6ccf6ae2071@sentry.io/1831923',
-            release: 'miro-code-highlighter@0.5.10'
+            release: 'miro-code-highlighter@0.5.11'
         });</script></head><body><div style="padding: 20px 10px"><a href="javascript:closeModal()" style="position: absolute; right: 20px; top: 10px;">close</a><section style="padding: 10px; line-height: 58px; text-align: center;"><textarea id="feedback_area" placeholder="Please write your feedback here" class="miro-input miro-input--primary" style="width: 400px; height: 200px; margin-bottom: 10px;" maxlength="1000" aria-label="feedback"></textarea><br/><button class="miro-btn miro-btn--primary miro-btn--small" onclick="sendFeedback()">Send Feedback</button></section></div></body></html><script>function sendFeedback() {
         try {
             const feedbackText = document.getElementById('feedback_area').value;
