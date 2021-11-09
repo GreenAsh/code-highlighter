@@ -5,22 +5,22 @@ import {settings} from "./shared-settings";
  * some doc
  */
 function initPage() {
-    const languages = document.getElementById('languages');
+    const langSelect = document.getElementById('languages');
     const currentLang = settings.getLang();
     const langArray = settings.languages;
     for (let i = 0; i < langArray.length; i++) {
         const lang = langArray[i];
-        const radioButton = document.createElement("label");
-        radioButton.id = lang;
-        radioButton.className = 'radiobutton';
-        radioButton.tabIndex = i;
-        radioButton.style.marginBottom = '4px';
-        radioButton.innerHTML = `<input type="radio" value="0" name="radio" ${currentLang === lang ? 'checked=""' : ''}> <span>${lang}</span>`
-        radioButton.onclick = () => {
-            settings.setLang(lang);
-        };
-        languages.appendChild(radioButton);
+        const langOption = document.createElement('option');
+        langOption.textContent = lang;
+        langOption.value = lang;
+        langOption.selected = currentLang === lang;
+        langSelect.appendChild(langOption);
     }
+    langSelect.onchange = () => {
+        const selectedLang = langSelect.options[langSelect.selectedIndex].value;
+        settings.setLang(selectedLang);
+    };
+
     const themeChooser = document.getElementById('themes_select');
     const themes = themeRegistry.listThemes()
     for (let i = 0; i < themes.length; i++) {
