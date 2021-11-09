@@ -162,6 +162,7 @@ async function highlightWidgets(lang: string, widgets:Array<IWidget>) {
     }
 
     let count = 0;
+    let errorNotification = '';
 
     for (let i = 0; i < widgets.length; i++) {
         let widget = widgets[i];
@@ -172,7 +173,9 @@ async function highlightWidgets(lang: string, widgets:Array<IWidget>) {
         }
         let highlightedText = await highlighter.highlight(lang, plainText);
         if (highlightedText.length >= MAX_TEXT_SIZE) {
-            miro.showErrorNotification('Highlight failed, due to possible loss of data');
+            if (errorNotification === '') {
+                errorNotification = `Highlight failed, due to possible loss of data. One of highlighted text length: ${highlightedText.length}, limit: ${MAX_TEXT_SIZE}`;
+            }
             const message = `Highlighted length: ${highlightedText.length} Cleaned length: ${plainText.length}  Widget text length: ${widgetText.length}`;
             Sentry.captureMessage(message);
             console.warn(message);
@@ -206,7 +209,11 @@ async function highlightWidgets(lang: string, widgets:Array<IWidget>) {
             console.error(e);
         }
     }
-    await miro.showNotification(`Highlighted ${count} widgets`);
+    if (errorNotification !== ''){
+        await miro.showErrorNotification(`Highlighted ${count} widgets. ` + errorNotification);
+    } else {
+        await miro.showNotification(`Highlighted ${count} widgets`);
+    }
 }
 
 const BLOCK_ELEMENTS = new Map<string, number>([
