@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
-version = '0.5.8'
+version = '0.5.9'
 
 module.exports = {
     mode: 'production',
