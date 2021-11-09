@@ -1,5 +1,5 @@
-## Code Highlight Miro Plugin
-Code highlight plugin for miro.com.
+## Code syntax highlighting Miro Plugin
+Code syntax highlighting plugin for miro.com.
 
 <a href="https://miro.com/oauth/authorize/?response_type=code&client_id=3074457347020676712&redirect_uri=%2Fconfirm-app-install%2F">direct installation link</a>
 
