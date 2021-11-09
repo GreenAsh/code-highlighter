@@ -2,32 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="https://miro.com/app/static/styles.1.0.css"/>
-    <title>Install code syntax highlighting Miro Plugin</title>
-    <style>
-        body {
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/mirotone/dist/styles.css"/>
+    <title>Code syntax highlighting Miro Plugin</title>
 </head>
 <body>
-<div style="width: 700px; text-align: left">
-    <p>
-        <span class="miro-h2">Code syntax highlighter for miro.com</span><br/><br />
-        <a href="https://miro.com/oauth/authorize/?response_type=code&client_id=3074457347020676712&redirect_uri=%2Fconfirm-app-install%2F">
-            <button class="miro-btn miro-btn--primary miro-btn--medium">Install</button>
-        </a><br /><br />
-        <a href="https://github.com/GreenAsh/code-highlighter/">source code</a>
-    </p>
-    <div class="miro-h1">How to use plugin</div>
-    <p>
-        <span class="miro-p-large">Usage: select widgets and press the plugin icon in the bottom bar</span><br />
-        <img src="docs/img/help_highlight_selection.gif" width="100%" />
-    </p>
-    <p>
-        <span class="miro-p-large">Settings: click the plugin icon in the bottom toolbar without widget selection</span><br />
-        <img src="docs/img/help_open_settings.gif" width="100%" />
-    </p>
+<div class="grid">
+    <div class="cs3 ce10">
+        <h1 class="h1">Code syntax highlighter for miro.com</h1>
+    </div>
+    <div class="cs3 ce10">
+        <a target="_blank" href="https://miro.com/oauth/authorize/?response_type=code&client_id=3074457347020676712&redirect_uri=%2Fconfirm-app-install%2F">
+            <button class="button button-primary" type="button" style="width: 100px">Install</button>
+        </a>
+    </div>
+    <div class="cs3 ce10">
+        <a class="link link-text" target="_blank" href="https://github.com/GreenAsh/code-highlighter/">Source code on github.com</a>
+    </div>
+    <div class="cs3 ce10">
+        <h2 class="h2">How to use plugin</h2>
+        <p class="p-large">
+            Usage: select widgets and press the plugin icon in the bottom bar or at the widgets menu
+        </p>
+        <img src="docs/img/help_highlight_selection.gif" width="1000px" />
+        <p class="p-large">
+            Settings: click the plugin icon in the bottom toolbar without widget selection
+        </p>
+        <img src="docs/img/help_open_settings.gif" width="1000px" />
+    </div>
 </div>
 </body>
 </html>
