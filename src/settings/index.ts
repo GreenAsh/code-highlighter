@@ -9,19 +9,17 @@ function initPage() {
     const currentLang = settings.getLang();
     const langArray = settings.languages;
     for (let i = 0; i < langArray.length; i++) {
-        const lang = langArray[i]
-        const button = document.createElement("button");
-        button.id = lang;
-        button.className = `miro-btn miro-btn--${currentLang === lang ? 'primary' : 'secondary'} miro-btn--medium`;
-        button.textContent = lang;
-        button.onclick = () => {
-            const selectedButton = document.getElementById(settings.getLang());
-            selectedButton.className = selectedButton.className.replace('primary', 'secondary');
+        const lang = langArray[i];
+        const radioButton = document.createElement("label");
+        radioButton.id = lang;
+        radioButton.className = 'radiobutton';
+        radioButton.tabIndex = i;
+        radioButton.style.marginBottom = '4px';
+        radioButton.innerHTML = `<input type="radio" value="0" name="radio" ${currentLang === lang ? 'checked=""' : ''}> <span>${lang}</span>`
+        radioButton.onclick = () => {
             settings.setLang(lang);
-            button.className = button.className.replace('secondary', 'primary');
-            miro.board.ui.closeModal();
         };
-        languages.appendChild(button);
+        languages.appendChild(radioButton);
     }
     const themeChooser = document.getElementById('themes_select');
     const themes = themeRegistry.listThemes()
