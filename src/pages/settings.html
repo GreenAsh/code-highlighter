@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Color Highlighter Settings</title>
-    <link rel="stylesheet" type="text/css" href="https://miro.com/app/static/styles.1.0.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/mirotone/dist/styles.css"/>
+<!--    <link rel="stylesheet" type="text/css" href="https://miro.com/app/static/styles.1.0.css"/>-->
 
     <script
             src="https://browser.sentry-cdn.com/6.14.0/bundle.min.js"
@@ -20,22 +21,21 @@
     <script type="text/javascript" src="https://miro.com/app/static/sdk.1.1.js"></script>
 </head>
 <body>
-<div style="padding: 20px 10px">
-    <a href="javascript:miro.board.ui.closeModal();" style="position: absolute; right: 20px; top: 10px;">close</a>
-    <h1>Code syntax highlighter Settings</h1>
-    <section id="languages" style="padding: 10px; line-height: 58px; text-align: center;">
-    </section>
-    <section id="themes" style="padding: 10px; line-height: 58px; text-align: center;">
-        <span class="miro-h2">Theme </span>
-        <select id="themes_select" class="miro-select miro-select--secondary">
-        </select>
-    </section>
-    <br />
-    <section style="text-align: center">
-        <a href="feedback.html">
-            <span class="miro-p-small">feedback</span>
-        </a>
-    </section>
+<div class="grid">
+    <div class="cs2 ce6">
+        <h3 class="h3">Code syntax highlighter Settings</h3>
+    </div>
+    <div class="cs8 ce9 grid">
+        <button class="button-icon button-icon-small icon-help" type="button" onclick="location.href='feedback.html';"></button>
+        <button class="button-icon button-icon-small icon-close" type="button" onclick="miro.board.ui.closeModal();"></button>
+    </div>
+    <div class="cs2 ce3">Default language</div>
+    <div id="languages" class="cs4 ce8 grid">
+    </div>
+    <div class="cs2 ce3">Theme</div>
+    <div class="cs4 ce8">
+        <select id="themes_select" class="select"></select>
+    </div>
 </div>
 </body>
 </html>
