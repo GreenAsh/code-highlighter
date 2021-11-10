@@ -1,7 +1,7 @@
 ## Code syntax highlighting Miro Plugin
 Code syntax highlighting plugin for miro.com.
 
-<a target="_blank" href="https://miro.com/oauth/authorize/?response_type=code&client_id=3074457347020676712&redirect_uri=%2Fconfirm-app-install%2F">Install</a>
+<a target="_blank" href="https://miro.com/oauth/authorize/?response_type=code&client_id=3074457347020676712&redirect_uri=%2Fconfirm-app-install%2F">Install plugin at miro.com</a>
 
 <a target="_blank" href="https://miro-code-highlighter.glitch.me/install.html">Installation page</a>
 
