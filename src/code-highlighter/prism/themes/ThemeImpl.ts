@@ -36,13 +36,28 @@ export class ThemeImpl implements Theme {
             return;
         }
         let classNames = className.replace(/-/g, '_').split(' ');
+        const annotationClass = 'annotation';
+        let hasAnnotation = false;
         classNames.forEach(value => {
-            if (value === 'token'){
+            if (value === 'token') {
+                return;
+            }
+            // remember if we had annotanion in class names
+            // apply annotation styles later
+            if (value === annotationClass) {
+                hasAnnotation = true;
                 return;
             }
             this.mergeStyle(value, element, true);
             this.mergeStyle(`${lang}_${value}`, element, false);
         });
+
+        // java @annotation elements after prism conversion will have class name: "token annotation punctuation"
+        // so the "punctuation" styles are always overrides "annotation" ones.
+        if (hasAnnotation) {
+            this.mergeStyle(annotationClass, element, true);
+            this.mergeStyle(`${lang}_${annotationClass}`, element, false);
+        }
     }
 
     private mergeStyle(className: string, element: HTMLElement, warn: boolean){

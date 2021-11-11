@@ -25,18 +25,7 @@ export class PrismDOMProcessor implements DOMProcessor {
     }
 
     private static replacesBreaks(html:string): string  {
-        let result = html.replace(/\n/gm, '</p><p>');
-        if (result.startsWith('</p>')){
-            result = result.substring(4);
-        } else {
-            result = '<p>' + result;
-        }
-        if (result.endsWith('<p>')){
-            result = result.substring(0, result.length - 3);
-        } else {
-            result += '</p>';
-        }
-        return result;
+        return html.replace(/(?:\r\n|\r|\n)/g, '<br>');
     }
 
     private transform(parent: Node, out: Node) {
