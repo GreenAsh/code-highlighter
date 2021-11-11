@@ -1,22 +1,43 @@
 import {default as highlighter} from 'code-highlighter/prism'
+import {ThemeContext} from "./code-highlighter/prism/themes/interfaces";
+import {themeRegistry} from "./code-highlighter/prism/themes";
 
-highlighter.highlight('java', `public class MineSweeper
-{\tprivate int[][] myTruth;
-\tprivate boolean[][] myShow;
-\t
-\tpublic void cellPicked(int row, int col)
-\t{\tif( inBounds(row, col) && !myShow[row][col] )
-\t\t{\tmyShow[row][col] = true;
-\t\t
-\t\t\tif( myTruth[row][col] == 0)
-\t\t\t{\tfor(int r = -1; r <= 1; r++)
-\t\t\t\t\tfor(int c = -1; c <= 1; c++)
-\t\t\t\t\t\tcellPicked(row + r, col + c);
-\t\t\t}\t
-\t\t}
-\t}
-\t
-\tpublic boolean inBounds(int row, int col)
-\t{\treturn 0 <= row && row < myTruth.length && 0 <= col && col < myTruth[0].length;
-\t}
+ThemeContext.getInstance().currentTheme = themeRegistry.getTheme('okaida');
+highlighter.highlight('java', `package org.springframework.boot.actuate.cache;
+
+/**
+ * test
+ */
+@EndpointWebExtension(endpoint = CachesEndpoint.class)
+public class CachesEndpointWebExtension {
+
+    private final CachesEndpoint delegate;
+
+    public CachesEndpointWebExtension(CachesEndpoint delegate) {
+        this.delegate = delegate;
+    }
+
+    @ReadOperation
+    public WebEndpointResponse<CacheEntry> cache(@Selector String cache, @Nullable String cacheManager) {
+        try {
+            CacheEntry entry = this.delegate.cache(cache, cacheManager);
+            int status = (entry != null) ? WebEndpointResponse.STATUS_OK : WebEndpointResponse.STATUS_NOT_FOUND;
+            return new WebEndpointResponse<>(entry, status);
+        }
+        catch (NonUniqueCacheException ex) {
+            return new WebEndpointResponse<>(WebEndpointResponse.STATUS_BAD_REQUEST);
+        }
+    }
+
+    @DeleteOperation
+    public WebEndpointResponse<Void> clearCache(@Selector String cache, @Nullable String cacheManager) {
+        try {
+            boolean cleared = this.delegate.clearCache(cache, cacheManager);
+            int status = (cleared ? WebEndpointResponse.STATUS_NO_CONTENT : WebEndpointResponse.STATUS_NOT_FOUND);
+            return new WebEndpointResponse<>(status);
+        }
+        catch (NonUniqueCacheException ex) {
+            return new WebEndpointResponse<>(WebEndpointResponse.STATUS_BAD_REQUEST);
+        }
+    }
 }`).then(value => console.log(value)).catch(reason => console.error(reason));

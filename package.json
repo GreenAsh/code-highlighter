@@ -14,15 +14,11 @@
   "license": "MIT",
   "dependencies": {
     "@sentry/browser": "^6.14.1",
-    "prismjs": "^1.17.1",
-    "react": "^16.9.12",
-    "react-dom": "^16.9.12"
+    "prismjs": "^1.25.0"
   },
   "devDependencies": {
     "@sentry/typescript": "^5.20.1",
     "@types/prismjs": "^1.16.0",
-    "@types/react": "^16.9.12",
-    "@types/react-dom": "^16.9.4",
     "copy-webpack-plugin": "^9.0.1",
     "html-webpack-plugin": "^5.5.0",
     "raw-loader": "^4.0.2",
