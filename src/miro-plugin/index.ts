@@ -114,13 +114,7 @@ async function hasPermission(permission: String) {
 }
 
 async function bottomBarAction(){
-    const widgets = await miro.board.selection.get();
-    if (widgets.length === 0){
-        await showSettings();
-    } else {
-        await reselectWidgets(widgets);
-        await highlightWidgets(settings.getLang(), widgets);
-    }
+    await showSettings();
 }
 
 async function reselectWidgets(widgets: IWidget[]) {
