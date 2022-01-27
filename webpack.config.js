@@ -1,8 +1,9 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const copyPlugin = require('copy-webpack-plugin');
+const packageSettings = require('./package.json');
 
-version = '0.5.16'
+version = packageSettings.version || '0.0.0';
 
 module.exports = {
     mode: 'production',
@@ -46,7 +47,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-        new HtmlWebpackPlugin({
+        new htmlWebpackPlugin({
             template: "./src/pages/settings.html",
             filename: "./settings.html",
             templateParameters: {
@@ -55,7 +56,7 @@ module.exports = {
             chunks: ["syntax-highlighter-settings"],
             inject: false
         }),
-        new HtmlWebpackPlugin({
+        new htmlWebpackPlugin({
             template: "./src/pages/index.html",
             filename: "./index.html",
             templateParameters: {
@@ -64,7 +65,7 @@ module.exports = {
             chunks:["syntax-highlighter-miro-plugin"],
             inject: false
         }),
-        new HtmlWebpackPlugin({
+        new htmlWebpackPlugin({
             template: "./src/pages/feedback.html",
             filename: "./feedback.html",
             templateParameters: {
@@ -72,10 +73,10 @@ module.exports = {
             },
             inject: false
         }),
-        new CopyPlugin({
+        new copyPlugin({
             patterns: [
                 { from: "./src/pages/install.html", to: "./install.html" },
-                { from: "./docs", to: "./docs" }
+                { from: "./resources/img", to: "./docs" }
             ]
         }),
     ]

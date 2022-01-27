@@ -31,9 +31,9 @@ All the plugin static files, which are being built by `webpack`, are located und
 
 #### Highlight
 Select widgets and press the plugin button
-<img src="docs/img/help_highlight_selection.gif" />
+<img src="resources/img/help_highlight_selection.gif" />
 
 #### Open settings
 Click on the plugin button without selecting any widget
-<img src="docs/img/help_open_settings.gif" width="100%" />
+<img src="resources/img/help_open_settings.gif" width="100%" />
 
