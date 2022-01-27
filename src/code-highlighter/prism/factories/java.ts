@@ -1,9 +1,10 @@
+import 'prismjs/components/prism-java';
 import {DOM} from "../../config";
 import {CLikeTokenFactory} from "./clike";
 
 class JavaTokenFactory extends CLikeTokenFactory {
     create(name: String, className: string): Node | false | null {
-        let result = super.create(name, className);
+        const result = super.create(name, className);
         if (result !== null) {
             return result;
         }
@@ -18,4 +19,4 @@ class JavaTokenFactory extends CLikeTokenFactory {
     }
 }
 
-export default new JavaTokenFactory();
+export const java = new JavaTokenFactory();

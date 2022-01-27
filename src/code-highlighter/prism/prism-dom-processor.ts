@@ -1,6 +1,6 @@
-import {DOMProcessor} from "./prism-language-highlighter";
-import {DOM} from "../config";
-import {ThemeContext} from "./themes/interfaces";
+import {DOM} from '../config';
+import {DOMProcessor} from './prism-language-highlighter';
+import {ThemeContext} from './themes/interfaces';
 
 export class PrismDOMProcessor implements DOMProcessor {
     private _lang: string;
@@ -38,7 +38,6 @@ export class PrismDOMProcessor implements DOMProcessor {
             if (child.hasChildNodes()) {
                 this.transform(child, converted !== false ? converted : out);
             }
-            this.convert(child)
         })
     }
 
@@ -62,7 +61,7 @@ export class PrismDOMProcessor implements DOMProcessor {
         }
         let result = this._tokenFactory.create(classNames[1], element.className);
         if (result == null) {
-            console.warn(`Unknown token ${classNames[1]}`);
+            console.warn(`Unknown token ${classNames[1]} at ${element.className}.`);
         }
         return result == null ? element.cloneNode(false) : result;
     }
