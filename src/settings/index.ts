@@ -1,5 +1,5 @@
-import {themeRegistry} from "../code-highlighter/prism/themes";
-import {settings} from "./shared-settings";
+import {themeRegistry} from '../code-highlighter/prism/themes';
+import {settings} from './shared-settings';
 
 /**
  * some doc

@@ -10,7 +10,8 @@ export const langKey2Description: Map<string, LanguageDescription> = new Map([
     ['none', {key: 'none', displayName: 'None'}],
     ['java', {key: 'java', displayName: 'Java'}],
     ['js', {key: 'js', displayName: 'JavaScript'}],
-    ['ts', {key: 'ts', displayName: 'TypeScript'}]
+    ['ts', {key: 'ts', displayName: 'TypeScript'}],
+    ['gherkin', {key: 'gherkin', displayName: 'Gherkin'}]
 ]);
 const defaultMenuButtons: string[] = ['java', 'js', 'ts']
 
