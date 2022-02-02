@@ -1,5 +1,4 @@
 export const LANGUAGES = ['java', 'js', 'ts'];
-export const DEFAULT_LANGUAGE = 'ts';
 export const DEFAULT_THEME = 'okaidia';
 export class DOM {
     public static createElement(tagName:string, className: string): HTMLElement {
