@@ -5,22 +5,6 @@ import {settings} from "./shared-settings";
  * some doc
  */
 function initPage() {
-    const langSelect = document.getElementById('languages');
-    const currentLang = settings.getLang();
-    const langArray = settings.languages;
-    for (let i = 0; i < langArray.length; i++) {
-        const lang = langArray[i];
-        const langOption = document.createElement('option');
-        langOption.textContent = lang;
-        langOption.value = lang;
-        langOption.selected = currentLang === lang;
-        langSelect.appendChild(langOption);
-    }
-    langSelect.onchange = () => {
-        const selectedLang = langSelect.options[langSelect.selectedIndex].value;
-        settings.setLang(selectedLang);
-    };
-
     const themeChooser = document.getElementById('themes_select');
     const themes = themeRegistry.listThemes()
     for (let i = 0; i < themes.length; i++) {
