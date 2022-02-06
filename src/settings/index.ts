@@ -1,25 +1,13 @@
-import {themeRegistry} from "../code-highlighter/prism/themes";
-import {settings} from "./shared-settings";
+import {themeRegistry} from '../code-highlighter/prism/themes';
+import {settings} from './shared-settings';
 
 /**
  * some doc
  */
 function initPage() {
-    const langSelect = document.getElementById('languages');
-    const currentLang = settings.getLang();
-    const langArray = settings.languages;
-    for (let i = 0; i < langArray.length; i++) {
-        const lang = langArray[i];
-        const langOption = document.createElement('option');
-        langOption.textContent = lang;
-        langOption.value = lang;
-        langOption.selected = currentLang === lang;
-        langSelect.appendChild(langOption);
-    }
-    langSelect.onchange = () => {
-        const selectedLang = langSelect.options[langSelect.selectedIndex].value;
-        settings.setLang(selectedLang);
-    };
+    settings.getMenuButtons().forEach((value, index) => {
+        initLanguages(value, index);
+    })
 
     const themeChooser = document.getElementById('themes_select');
     const themes = themeRegistry.listThemes()
@@ -38,6 +26,25 @@ function initPage() {
             settings.setTheme(selectedTheme);
             miro.showNotification('saved');
         }
+    };
+}
+
+function initLanguages(value: string, index:number) {
+    const langSelector = document.getElementById('lang' + index) as HTMLSelectElement
+    const langArray = settings.getAvailableLanguages();
+    for (const lang of langArray) {
+        if (index === 0 && lang.key === 'none') {
+            continue
+        }
+        const langOption = document.createElement('option');
+        langOption.textContent = lang.displayName;
+        langOption.value = lang.key;
+        langOption.selected = lang.key === value;
+        langSelector.appendChild(langOption);
+    }
+    langSelector.onchange = () => {
+        const selectedLang = langSelector.options[langSelector.selectedIndex].value;
+        settings.setMenuButton(index, selectedLang);
     };
 }
 

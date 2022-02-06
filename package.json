@@ -1,12 +1,12 @@
 {
   "name": "code-syntax-highlighter",
-  "version": "1.0.0",
+  "version": "1.0.17",
   "description": "",
   "main": "",
   "scripts": {
     "build": "webpack",
     "build-dev": "webpack --mode=development",
-    "watch": "webpack -w",
+    "watch": "webpack --mode=development -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
