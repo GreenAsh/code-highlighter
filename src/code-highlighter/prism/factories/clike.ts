@@ -1,4 +1,5 @@
-import {DOM} from "../../config";
+import 'prismjs/components/prism-clike';
+import {DOM} from '../../config';
 
 export class CLikeTokenFactory implements TokenFactory {
     create(name: String, className: string): Node | false | null {
@@ -19,5 +20,3 @@ export class CLikeTokenFactory implements TokenFactory {
         }
     }
 }
-
-export default new CLikeTokenFactory();

@@ -4,7 +4,7 @@ import {CLikeTokenFactory} from './clike'
 class JavascriptTokenFactory extends CLikeTokenFactory {
 
     create(name: String, className: string): Node | false | null {
-        let result = super.create(name, className);
+        const result = super.create(name, className);
         if (result !== null) {
             return result;
         }
@@ -24,4 +24,4 @@ class JavascriptTokenFactory extends CLikeTokenFactory {
     }
 }
 
-export default new JavascriptTokenFactory();
+export const javascript = new JavascriptTokenFactory();
