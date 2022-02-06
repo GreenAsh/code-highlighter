@@ -1,0 +1,4 @@
+Icons which was bought:
+java                =>  https://thenounproject.com/icon/java-4112415/
+gherkin/cucumber    =>  https://thenounproject.com/icon/cucumber-1015515/
+

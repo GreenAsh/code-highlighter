@@ -1,37 +1,66 @@
-## Welcome to GitHub Pages
+## Code syntax highlighter plugin for Miro
+The plugin can colorize the text according to the selected programming language in shape/text widgets.
 
-You can use the [editor on GitHub](https://github.com/GreenAsh/code-highlighter/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+<a target="_blank" href="https://miro.com/oauth/authorize/?response_type=code&client_id=3074457347020676712&redirect_uri=%2Fconfirm-app-install%2F">
+Installation link miro.com
+</a>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Highlighting
+![Highlight Widgets](resources/docs/highlight-widgets.gif)
 
-### Markdown
+### Widget menu configuration
+![Widget menu configuration](resources/docs/language-configuration.gif)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### List of supported languages
+- gherkin
+- java
+- javascript
+- typescript
 
-```markdown
-Syntax highlighted code block
+### Themes
 
-# Header 1
-## Header 2
-### Header 3
+#### Light Transparent (idea)
+![Light Transparent](resources/themes/idea.png)
 
-- Bulleted
-- List
+#### Material Light
+![Material Light](resources/themes/material-light.png)
 
-1. Numbered
-2. List
+#### Okaidia
+![Okaidia](resources/themes/okaidia.png)
 
-**Bold** and _Italic_ and `Code` text
+#### Prism
+![Okaidia](resources/themes/prism.png)
 
-[Link](url) and ![Image](src)
+#### Tomorrow Night
+![Tomorrow Night](resources/themes/tomorrow-night.png)
+
+#### VS Code
+![VS Code](resources/themes/vs.png)
+
+## Development
+
+### Debug locally
+
+```shell
+npm run watch       # build plugin
+http-server ./dist/ # install with npm https-server for easy serving files
+ngrok http 8080     # get public https link and set it to dev plugin in miro
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+### Deployment
 
-### Jekyll Themes
+All the plugin static files, which are being built by `webpack`, are located under the `dist`
+directory and published and served by `glitch.com`: https://miro-code-highlighter.glitch.me/install.html,
+`dist/*` files are available under `https://miro-code-highlighter.glitch.me/*`
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/GreenAsh/code-highlighter/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## FAQ/Problems
 
-### Support or Contact
+### Security / Data Sharing
+All the transformations happen on the client-side at the user browser (user) session.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+#### Troubleshooting data
+The plugin collects errors and their stack traces and sends them to `sentry.io` for improvement purposes, no user data is being collected.
+
+E.g. in case of text limit error, message like `Highlighted length: 7019 Cleaned length: 2490 Widget text length: 3012` is being sent to `sentry`.
+
+[Additional data which is being collected by sentry](https://docs.sentry.io/platforms/javascript/data-management/sensitive-data/), such as: `ip address`, `user-agent`.
