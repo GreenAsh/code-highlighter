@@ -75,8 +75,7 @@ module.exports = {
         }),
         new copyPlugin({
             patterns: [
-                { from: "./src/pages/install.html", to: "./install.html" },
-                { from: "./resources/img", to: "./docs" }
+                { from: "./src/pages/install.html", to: "./install.html" }
             ]
         }),
     ]
