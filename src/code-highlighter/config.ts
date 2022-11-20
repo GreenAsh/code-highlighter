@@ -1,4 +1,4 @@
-export const LANGUAGES = ['java', 'js', 'ts', 'gherkin'];
+export const LANGUAGES = ['java', 'js', 'ts', 'gherkin', 'csharp', 'json'];
 export const DEFAULT_THEME = 'okaidia';
 
 export class DOM {

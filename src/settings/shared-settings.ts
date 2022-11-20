@@ -8,10 +8,12 @@ export interface LanguageDescription {
 
 export const langKey2Description: Map<string, LanguageDescription> = new Map([
     ['none', {key: 'none', displayName: 'None'}],
+    ['csharp', {key: 'csharp', displayName: 'C#'}],
+    ['gherkin', {key: 'gherkin', displayName: 'Gherkin'}],
     ['java', {key: 'java', displayName: 'Java'}],
     ['js', {key: 'js', displayName: 'JavaScript'}],
-    ['ts', {key: 'ts', displayName: 'TypeScript'}],
-    ['gherkin', {key: 'gherkin', displayName: 'Gherkin'}]
+    ['json', { key: 'json', displayName: 'JSON'}],
+    ['ts', {key: 'ts', displayName: 'TypeScript'}]
 ]);
 const defaultMenuButtons: string[] = ['java', 'js', 'ts']
 

@@ -63,3 +63,13 @@ typings/
 # next.js build output
 .next
 package-lock.json
+
+# yarn
+yarn.lock
+
+# WebStorm
+.idea/*
+
+# macos
+.DS_Store
+resources/.DS_Store
