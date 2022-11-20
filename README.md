@@ -1,3 +1,5 @@
+> miro.com released a code block, that can replace this plugin [Write code in Miro and ship better-quality software](https://community.miro.com/product-news-31/write-code-in-miro-and-ship-better-quality-software-10544)
+
 ## Code syntax highlighter plugin for Miro
 The plugin can colorize the text according to the selected programming language in shape/text widgets.
 
