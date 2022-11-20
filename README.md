@@ -12,9 +12,11 @@ Installation link miro.com
 ![Widget menu configuration](resources/docs/language-configuration.gif)
 
 ### List of supported languages
+- c#
 - gherkin
 - java
 - javascript
+- json
 - typescript
 
 ### Themes
